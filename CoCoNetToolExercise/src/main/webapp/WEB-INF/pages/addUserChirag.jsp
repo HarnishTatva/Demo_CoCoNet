@@ -73,14 +73,14 @@ if(userid!=null && userid!=""){
                             <div class="form-group">
                                 <label for="txtFullname" class="col-lg-2 control-label">Full name :</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" ng-model="user.fname" data-ng-pattern="/^[a-zA-Z \d]+$/" id="txtFullname" placeholder="Full name">
+                                    <input type="text" class="form-control" ng-model="user.fname" data-ng-pattern="/^[a-zA-Z \d]+$/" id="txtFullname" placeholder="Full name" required="true">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="txtPassword" class="col-lg-2 control-label">Password :</label>
                                 <div class="col-lg-10">
-                                    <input type="password" ng-model="user.pwd" class="form-control" id="txtPassword" placeholder="Password">
+                                    <input type="password" ng-model="user.pwd" class="form-control" id="txtPassword" placeholder="Password" required="true">
                                 </div>
                             </div>
 
@@ -89,7 +89,7 @@ if(userid!=null && userid!=""){
                                 <div class="col-lg-10">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="gender" ng-model="user.gender" id="genderMale" value="1" checked="">
+                                            <input type="radio" name="gender" ng-model="user.gender" id="genderMale" value="1" checked="" required="true">
                                             Male
                                         </label>
                                     </div>
@@ -105,7 +105,7 @@ if(userid!=null && userid!=""){
                             <div class="form-group">
                                 <label for="txtEmail" class="col-lg-2 control-label">Email :</label>
                                 <div class="col-lg-10">
-                                    <input type="email" class="form-control" ng-model="user.emailid"  id="txtEmail" placeholder="Email Address">
+                                    <input type="email" class="form-control" ng-model="user.emailid"  id="txtEmail" placeholder="Email Address"  required="true">
                                 </div>
                             </div>
 
@@ -114,14 +114,14 @@ if(userid!=null && userid!=""){
                             <div class="form-group">
                                 <label for="txtDob" class="col-lg-2 control-label">Date Of Birth :</label>
                                 <div class="col-lg-10">
-                                    <input type="text" id="txtDob" class="form-control" placeholder="yyyy-mm-dd" ng-model="user.birthdate" />
+                                    <input type="text" id="txtDob" class="form-control" placeholder="yyyy-mm-dd" ng-model="user.birthdate"  required="true"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="txtPhoneNumber" class="col-lg-2 control-label">Phone number :</label>
                                 <div class="col-lg-10">
-                                    <input type="number" id="txtPhoneNumber" ng-model="user.phone" class="form-control" placeholder="Phone number" />
+                                    <input type="number" id="txtPhoneNumber" ng-model="user.phone" class="form-control" placeholder="Phone number"  required="true"/>
                                 </div>
                             </div>
 
@@ -154,8 +154,8 @@ if(userid!=null && userid!=""){
 	                            <div class="form-group">
 	                                <label for="ddlCity" class="col-lg-2 control-label">City :</label>
 	                                <div class="col-lg-10">
-	                                    <select class="form-control" id="ddlCity" ng-model="user.city">
-	                                        <option>--Select--</option>
+	                                    <select class="form-control" id="ddlCity" ng-model="user.city" required>
+	                                        <option value="">--Select--</option>
 	                                        <option selected="selected">Ahmedabad</option>
 	                                        <option>Gandhinagar</option>
 	                                        <option>Rajkot</option>
@@ -168,14 +168,14 @@ if(userid!=null && userid!=""){
 	                            <div class="form-group">
 	                                <label for="textAddress" class="col-lg-2 control-label">Address :</label>
 	                                <div class="col-lg-10">
-	                                    <textarea ng-model="user.address" class="form-control" rows="3" id="textAddress"></textarea>
+	                                    <textarea ng-model="user.address" class="form-control" rows="3" id="textAddress"  required="true"></textarea>
 	                                </div>
 	                            </div>
 	
 	                            <div class="form-group">
 	                                <label for="fileImage" class="col-lg-2 control-label">Image :</label>
 	                                <div class="col-lg-10">
-	                                	<input type="file" name="file" id="fileUserImage" class="form-control" file-upload="myFile" accept="image/*">
+	                                	<input type="file" name="file" id="fileUserImage" class="form-control" file-upload="myFile" accept="image/*"  ng-required="isImageRequired">
 	                                </div>
 	                            </div>
 	

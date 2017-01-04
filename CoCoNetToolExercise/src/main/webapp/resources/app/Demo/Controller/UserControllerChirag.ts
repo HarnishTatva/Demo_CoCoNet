@@ -26,6 +26,8 @@ module Demo {
             super($scope);
            $scope.vm = this;
            $scope.hobbies = [];
+           
+           $scope.isImageRequired = true;
            this.userMasterList = this.$scope.userMasterList = new Array<UserMasterChirag>();
            this.userServiceChirag.GetUserList().then((data) => {
 		        this.userMasterList = data;
@@ -105,6 +107,7 @@ module Demo {
         // Init
         public initialiseEditPage(id:number) {
         	this.userServiceChirag.GetUserByID(id).then((data) => {
+        		this.$scope.isImageRequired = false;
         		this.user = data;
         		this.$scope.user = data;
         		this.$scope.hobbies = this.user.hobbies.split(", ");
