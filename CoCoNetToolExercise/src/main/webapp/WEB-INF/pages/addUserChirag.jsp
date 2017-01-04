@@ -27,6 +27,39 @@
 	<script src="${pageContext.request.contextPath}/resources/app/Demo/Services/IFileUploadServiceChirag.js"></script> 
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/BaseController.js"></script>
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/UserControllerChirag.js"></script>
+    
+    
+    
+    <style>
+		.username.ng-valid {
+			background-color: lightgreen;
+		}
+		
+		.username.ng-dirty.ng-invalid-required {
+			background-color: red;
+		}
+		
+		.username.ng-dirty.ng-invalid-minlength {
+			background-color: yellow;
+		}
+		
+		.email.ng-valid {
+			background-color: lightgreen;
+		}
+		
+		.email.ng-dirty.ng-invalid-required {
+			background-color: red;
+		}
+		
+		.email.ng-dirty.ng-invalid-email {
+			background-color: yellow;
+		}
+		/* Styles go here */
+		.highlight-current-date button {
+			background: aqua;
+		}
+	</style>
+
 </head>
 <body ng-app="Demo">
 <%
@@ -73,15 +106,25 @@ if(userid!=null && userid!=""){
                             <div class="form-group">
                                 <label for="txtFullname" class="col-lg-2 control-label">Full name :</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" ng-model="user.fname" data-ng-pattern="/^[a-zA-Z \d]+$/" id="txtFullname" placeholder="Full name" required="true">
+                                    <input type="text" class="form-control" name="fname" ng-model="user.fname" data-ng-pattern="/^[a-zA-Z \d]+$/" id="txtFullname" placeholder="Full name" required="true" data-ng-minlength="3" data-ng-maxlength="30">
                                 </div>
+                                <div class="has-error"   data-ng-show="userForm.$dirty">
+									<span   data-ng-show="userForm.fname.$error.required">This is a
+										required field</span> <span   data-ng-show="userForm.fname.$error.minlength">Minimum
+										length required is 3</span> <span   data-ng-show="userForm.fname.$invalid">Full name accept only alphabetic value with max 30 characters</span>
+								</div>
                             </div>
 
                             <div class="form-group">
                                 <label for="txtPassword" class="col-lg-2 control-label">Password :</label>
                                 <div class="col-lg-10">
-                                    <input type="password" ng-model="user.pwd" class="form-control" id="txtPassword" placeholder="Password" required="true">
+                                    <input type="password" name="Password" ng-model="user.pwd" class="form-control" id="txtPassword" placeholder="Password" required="true" data-ng-minlength="8" data-ng-maxlength="20"  data-ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/">
                                 </div>
+                                <div class="has-error"   data-ng-show="userForm.$dirty">
+									<span   data-ng-show="userForm.Password.$error.required">This is a
+										required field</span> <span   data-ng-show="userForm.Password.$error.minlength">Minimum
+										length required is 8</span> <span   data-ng-show="userForm.Password.$invalid">Password accept 8 to 20 characters, 1 Uppercase, 1 Lower cases, 1 special character should mandatory </span>
+								</div>
                             </div>
 
                             <div class="form-group">
@@ -182,7 +225,7 @@ if(userid!=null && userid!=""){
 	                            <div class="form-group">
 	                                <div class="col-lg-10 col-lg-offset-2">
 	                                    <button type="submit" class="btn btn-primary">Submit</button>
-	                                    <a href="${pageContext.request.contextPath}/user/userList" class="btn btn-default">Cancel</a>
+	                                    <a href="${pageContext.request.contextPath}/userChirag/userList" class="btn btn-default">Cancel</a>
 	                                </div>
 	                            </div>
 
