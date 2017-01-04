@@ -11,5 +11,11 @@ module Demo {
     
     	customizeWidgetForm : any;
     	editCustomizeWidgetForm : any;
+    
+    	//Chirag
+	    userMasterList : Array<UserMasterChirag>;
+		user : UserMasterChirag;
+	    myFile: any;
+		dob:any;
     }
 }
