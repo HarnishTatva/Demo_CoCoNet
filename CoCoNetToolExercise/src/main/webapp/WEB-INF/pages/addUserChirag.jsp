@@ -112,7 +112,7 @@ if(userid!=null && userid!=""){
                             <div class="form-group">
                                 <label for="txtDob" class="col-lg-2 control-label">Date Of Birth :</label>
                                 <div class="col-lg-10">
-                                    <input type="text" id="txtDob" class="form-control" placeholder="MM/DD/YYYY" ng-model="dob"/>
+                                    <input type="text" id="txtDob" class="form-control" placeholder="yyyy-mm-dd" ng-model="user.birthdate" />
                                 </div>
                             </div>
 
@@ -124,26 +124,26 @@ if(userid!=null && userid!=""){
                             </div>
 
                             <div class="form-group">
-                                <label for="hobby" class="col-lg-2 control-label">Hobbies :</label>
+                                <label for="hobbies" class="col-lg-2 control-label">Hobbies :</label>
                                 <div class="col-lg-10">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" ng-model="user.hobbies" name="hobby" value="1" checked> Cricket
+                                            <input type="checkbox" name="hobbies" value="Cricket" ng-checked="hobbies.indexOf('Cricket') > -1" ng-click="ctrl.selectHobbies('Cricket')"> Cricket
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" ng-model="user.hobbies" name="hobby" value="2"> Football
+                                            <input type="checkbox" name="hobbies" value="Football" ng-checked="hobbies.indexOf('Football') > -1" ng-click="ctrl.selectHobbies('Football')"> Football
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" ng-model="user.hobbies" name="hobby" value="3"> Tennis
+                                            <input type="checkbox" name="hobbies" value="Tennis" ng-checked="hobbies.indexOf('Tennis') > -1" ng-click="ctrl.selectHobbies('Tennis')"> Tennis
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" ng-model="user.hobbies" name="hobby" value="4"> Chess
+                                            <input type="checkbox" name="hobbies" value="Chess" ng-checked="hobbies.indexOf('Chess') > -1" ng-click="ctrl.selectHobbies('Chess')"> Chess
                                         </label>
                                     </div>
                                 </div>
@@ -191,6 +191,11 @@ if(userid!=null && userid!=""){
         </div>
     </div>
    
-
+ 	<script>
+        $('#txtDob').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+    </script>
 </body>
 </html>

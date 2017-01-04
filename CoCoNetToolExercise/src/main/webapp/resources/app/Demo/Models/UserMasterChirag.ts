@@ -10,7 +10,7 @@ module Demo {
 	    public emailid: string;
 	    public pwd: number;
 	    public gender: number;
-	    public birthdate: string;
+	    public birthdate: Date;
 	    public imageFilePath: any;
 	    public phone: number;
 	    public hobbies: string;

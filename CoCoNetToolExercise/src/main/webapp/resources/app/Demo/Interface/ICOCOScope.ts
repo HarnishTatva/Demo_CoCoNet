@@ -17,5 +17,6 @@ module Demo {
 		user : UserMasterChirag;
 	    myFile: any;
 		dob:any;
+	    hobbies : string[];
     }
 }

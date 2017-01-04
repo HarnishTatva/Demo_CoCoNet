@@ -25,42 +25,47 @@ module Demo {
         constructor(private $scope: ICOCOScope, private $location: ng.ILocationService, private userServiceChirag: IUserServiceChirag,private $window: ng.IWindowService,private $modal: ng.ui.bootstrap.IModalService, private $filter: ng.IFilterService, private fileUploadServiceChirag: IFileUploadServiceChirag) {
             super($scope);
            $scope.vm = this;
+           $scope.hobbies = [];
            this.userMasterList = this.$scope.userMasterList = new Array<UserMasterChirag>();
            this.userServiceChirag.GetUserList().then((data) => {
 		        this.userMasterList = data;
 		        $scope.vm = data;
 		      });
-           
-           $scope.$watch('user.birthdate', function (newValue:any) {
-               if (newValue != undefined) {                    
-                   $scope.dob = $filter('date')(new Date(newValue), 'MM/dd/yyyy');
-               }
-           });
+          
         }
 
       
         
-       
+        selectHobbies(hobbies : string) {            
+            if (this.$scope.hobbies.indexOf(hobbies) > -1) {
+                this.$scope.hobbies = this.$scope.hobbies.filter(x => x != hobbies);
+            }
+            else {
+                this.$scope.hobbies.push(hobbies);
+            }
+        }
         
         onSave(flag : any) {
-            	if(flag == 1){
-            		
-            	
-	            		var file = this.$scope.myFile;
-	                    if (file != null || file != undefined) {
-	                        var name = file.name;
-	                        var uploadUrl = "/userChirag/fileUpload";
-	                        this.fileUploadServiceChirag.uploadFile(file, uploadUrl);
-	                        this.$scope.user.imageFilePath = name;
-	                    }
-            			this.userServiceChirag.SaveUser(this.$scope, this.$scope.user).then((data) => {
+        	
+	    		this.user = this.$scope.user;
+	    		var file = this.$scope.myFile;
+	    		this.user.hobbies = this.$scope.hobbies.join(", "); 
+	            if (file != null || file != undefined) {
+	                var name = file.name;
+	                var uploadUrl = "/userChirag/fileUpload";
+	                this.fileUploadServiceChirag.uploadFile(file, uploadUrl);
+	                this.user.imageFilePath = name;
+	            }
+	            
+	            
+            	if(flag == 1){            			
+            			this.userServiceChirag.SaveUser(this.$scope, this.user).then((data) => {
             				if(data == 'success'){
             					this.$window.location.href="/userChirag/userList";
             		    	}
                        	});
 	            } else if (flag == 0) {
-	            		
-	            		this.userServiceChirag.UpdateUser(this.$scope, this.$scope.user).then((data) => {
+	            		this.userServiceChirag.UpdateUser(this.$scope, this.user).then((data) => {
             				if(data == 'success'){
             					this.$window.location.href="/userChirag/userList";
             		    	}
@@ -100,7 +105,10 @@ module Demo {
         // Init
         public initialiseEditPage(id:number) {
         	this.userServiceChirag.GetUserByID(id).then((data) => {
-		       this.$scope.user = data;
+        		this.user = data;
+        		this.$scope.user = data;
+        		this.$scope.hobbies = this.user.hobbies.split(", ");
+		        this.user.birthdate = this.$filter('date')(data.birthdate, 'yyyy-MM-dd');
 		      });
         }
 
