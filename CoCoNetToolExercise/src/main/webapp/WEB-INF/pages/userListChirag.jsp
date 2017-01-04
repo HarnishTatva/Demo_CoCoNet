@@ -44,10 +44,7 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/userList">Manage Users</a>
-                    </li>
-                    <li>
-                        <a href="/userList">Manage Employees</a>
+                        <a href="${pageContext.request.contextPath}/userChirag/userList">Manage Users</a>
                     </li>
                 </ul>
             </div>
@@ -85,7 +82,7 @@
 								<td>{{userMasterList.fname}}</td>								
 								<td>{{userMasterList.gender}}</td>
 								<td>{{userMasterList.emailid}}</td>
-								<td ng-bind="userMasterList.birthDate | date:'MM/dd/yyyy'"></td>
+								<td>{{userMasterList.birthdate | date:'dd-MM-yyyy'}}</td>
 								<td>{{userMasterList.phone}}</td>
 								<td>{{userMasterList.hobbies}}</td>
 								<td>{{userMasterList.city}}</td>

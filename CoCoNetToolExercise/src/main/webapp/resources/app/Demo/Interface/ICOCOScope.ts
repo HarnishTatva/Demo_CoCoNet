@@ -16,7 +16,7 @@ module Demo {
 	    userMasterList : Array<UserMasterChirag>;
 		user : UserMasterChirag;
 	    myFile: any;
-		dob:any;
+		isImageRequired:boolean;
 	    hobbies : string[];
     }
 }
