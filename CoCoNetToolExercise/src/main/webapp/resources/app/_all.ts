@@ -14,4 +14,15 @@
 /// <reference path='Demo/Controller/ModalInstanceController.ts' />
 /*/// <reference path='Demo/Directive/DraggableDirective.ts' />
 */
+
+
+/// <reference path='Demo/Models/UserMasterChirag.ts' />
+/// <reference path='Demo/Services/FileUploadServiceChirag.ts' />
+/// <reference path='Demo/Services/IFileUploadServiceChirag.ts' />
+/// <reference path='Demo/Directive/FileUploadChirag.ts' />
+/// <reference path='Demo/Controller/UserPopupControllerChirag.ts' />
+/// <reference path='Demo/Services/IUserServiceChirag.ts' />
+/// <reference path='Demo/Services/UserServiceChirag.ts' />
+/// <reference path='Demo/Controller/UserControllerChirag.ts' />
+
 /// <reference path='Demo/DemoAPP.ts' />
