@@ -101,7 +101,7 @@ module DemoChandni {
             }
             else {
                 var index = this.$scope.arrayHobbies.indexOf(item);
-                this.$scope.arrayHobbies.slice(index, 1);
+                this.$scope.arrayHobbies.splice(index, 1);
             }
         }
 

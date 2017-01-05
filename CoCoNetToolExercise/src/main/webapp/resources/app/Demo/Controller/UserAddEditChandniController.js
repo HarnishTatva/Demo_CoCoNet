@@ -92,7 +92,7 @@ var DemoChandni;
             }
             else {
                 var index = this.$scope.arrayHobbies.indexOf(item);
-                this.$scope.arrayHobbies.slice(index, 1);
+                this.$scope.arrayHobbies.splice(index, 1);
             }
         };
         UserAddEditChandniController.prototype.getFullName = function (firstName, lastName) {
