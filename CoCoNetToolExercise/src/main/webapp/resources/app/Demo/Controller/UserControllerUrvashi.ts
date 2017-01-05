@@ -41,7 +41,7 @@ module DemoUrvashi {
                           this.fileUploadServiceUrvashi.uploadFileToUrl(file, uploadUrl);
                           this.$scope.user.image = name; 
                           this.userServiceUrvashi.updateUser(this.$scope.user).then((data) => {
-              				if(data == 'success'){
+              				if(data.success == 'success'){
               					this.$window.location.href="UsersListUrvashi";
               		    	}
                          });

@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.tatvacoconet.entity.UserUrvashi;
 import com.tatvacoconet.service.IUserServiceUrvashi;
 
@@ -33,12 +34,19 @@ import com.tatvacoconet.service.IUserServiceUrvashi;
 @Controller
 public class UserControllerUrvashi {
 
-private Logger logger = LoggerFactory.getLogger(UserControllerUrvashi.class);
-@Autowired
-private IUserServiceUrvashi userService;
+	private Logger logger = LoggerFactory.getLogger(UserControllerUrvashi.class);
+	@Autowired
+	private IUserServiceUrvashi userService;
 
-@Autowired
-ServletContext servletContext;
+	@Autowired
+	ServletContext servletContext;
+
+	@RequestMapping(value = "/userHello_Urvashi", method = RequestMethod.GET)
+	public ResponseEntity<String> userHello_harshal(@RequestParam(value = "username", required = false) String username) {
+		String helloUser = "Hello from "+username+" ...";
+		return new ResponseEntity<String>(helloUser, HttpStatus.OK);
+	}
+
 
 	@RequestMapping(value = "/addUserUrvashi", method = RequestMethod.GET)
 	public ModelAndView addUserUrvashi(@RequestParam(value="id",required=false) String id){
@@ -49,44 +57,48 @@ ServletContext servletContext;
 			String tech = "["+user.getTechnology()+"]";
 			user.setTechnology(tech);
 			mav.addObject("edituser",user);
- 			mav.addObject("techArray",tech);
+			mav.addObject("techArray",tech);
 		}
 		logger.info("addUserUrvashi Page Loading");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/insertUserUrvashi", method = RequestMethod.GET)
 	public String insertUserUrvashi(){
 		logger.info("Insert new user");
 		return "addUserUrvashi";
 	}
-	
+
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public ResponseEntity<String> saveUser(@RequestBody UserUrvashi user) {
 		String temp =Arrays.toString(user.getTechArray());
 		user.setTechnology(temp.replace("[","").replace("]", ""));
 		userService.save(user);
-		return new ResponseEntity<String>(new Gson().toJson("success"), HttpStatus.OK);
+		JsonObject json = new JsonObject();
+		json.addProperty("userId", user.getId());
+		json.addProperty("success", "success");
+		
+		return new ResponseEntity<String>(new Gson().toJson(json), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/UsersListUrvashi", method = RequestMethod.GET)
 	public String UsersListUrvashi(){
 		logger.info("UsersList  Page Loading");
 		return "UsersListUrvashi";
 	}
-	
+
 	@RequestMapping(value = "/listUser", method = RequestMethod.GET)
 	public ResponseEntity<List<UserUrvashi>> listUser() {
 		List<UserUrvashi> list = userService.listUser();
 		return new ResponseEntity<List<UserUrvashi>>(list, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteUser(@RequestBody String id) {
 		userService.deleteUser(Integer.parseInt(id));
 		return new ResponseEntity<String>(new Gson().toJson("success"),HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
 	public ResponseEntity<String> updateUser(@RequestBody UserUrvashi user) {
 		String temp =Arrays.toString(user.getTechArray());
@@ -94,8 +106,8 @@ ServletContext servletContext;
 		userService.updateUser(user);
 		return new ResponseEntity<String>(new Gson().toJson("success"),HttpStatus.OK);
 	}
-	
-	
+
+
 	@RequestMapping(value = "/userImageUploadUrvashi", method = RequestMethod.POST)
 	public String userImageUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		logger.info("file >>>>>> " + file.getSize());
@@ -116,5 +128,5 @@ ServletContext servletContext;
 		}
 		return "profile_image_uploaded";
 	}
-	
+
 }
