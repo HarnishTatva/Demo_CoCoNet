@@ -208,7 +208,7 @@
 								<div class="col-lg-10">
 									<input type="text" id="txtPhoneNumber" class="form-control" ng-pattern="/^[0-9]{1,10}$/"
 										placeholder="Phone number" ng-model="user.phone" name="txtPhoneNumber"
-										ng-init="user.phone = '${edituser.phone}'" required/>
+										ng-init="user.phone = ${edituser.phone}" required/>
 								</div>
 								
 								<div data-ng-show="userForm.txtPhoneNumber.$error.pattern">
