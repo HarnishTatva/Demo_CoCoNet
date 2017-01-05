@@ -2,6 +2,7 @@
 /// <reference path="../typings/angularjs/angular.d.ts" />
 
 
+
 module Demo {
     'use strict';
     var Demo = angular.module('Demo', ['ui.bootstrap', 'ngSanitize']);
