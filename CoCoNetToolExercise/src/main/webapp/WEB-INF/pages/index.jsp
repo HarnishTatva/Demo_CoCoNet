@@ -5,13 +5,14 @@
 </head>
 <body>
 
-	<h1>Main Demo Page</h1>
-	
-	<a>Test Changes</a>
-	<a href="addUserUrvashi">Test Urvash123i</a>
-	<a href="userChirag/userList">Test Chirag</a>
-	<a>Test Harshal</a>
-	<h3><a href="${pageContext.request.contextPath}/user_harshal/usersList_harshal">_HarShaL_ Demo - lolz</a></h3>
-	<h3><a href="${pageContext.request.contextPath}/chandni/chandni-user-list">Chandni Test</a></h3>
+	<h2>Main Demo Page</h2>	
+	<hr/>
+	<h3>Test Changes</h3>
+	<ul>
+		<li><a href="UsersListUrvashi">Test Urvashi</a></li>
+		<li><a href="userChirag/userList">Test Chirag</a></li>
+		<li><a href="${pageContext.request.contextPath}/user_harshal/usersList_harshal">Test Harshal</a></li>
+		<li><a href="${pageContext.request.contextPath}/chandni/chandni-user-list">Test Chandni</a></li>
+	</ul>
 </body>
 </html>
