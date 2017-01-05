@@ -181,4 +181,23 @@ public class UserMasterChirag implements java.io.Serializable {
 		this.updateddate = updateddate;
 	}
 
+	public UserMasterChirag(String fname, String emailid, String pwd, long gender, Date birthdate,
+			String imageFilePath, long phone, String hobbies, String city, String address, String createddate,
+			String updateddate) {
+		this.fname = fname;
+		this.emailid = emailid;
+		this.pwd = pwd;
+		this.gender = gender;
+		this.birthdate = birthdate;
+		this.imageFilePath = imageFilePath;
+		this.phone = phone;
+		this.hobbies = hobbies;
+		this.city = city;
+		this.address = address;
+		this.createddate = createddate;
+		this.updateddate = updateddate;
+	}
+	
+	
+
 }
