@@ -79,6 +79,7 @@ public abstract class TatvaSoftDAOImpl<T,ID extends Serializable> implements ITa
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
     public T find(ID id) {
@@ -126,7 +127,7 @@ public abstract class TatvaSoftDAOImpl<T,ID extends Serializable> implements ITa
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-			session.delete(session.load(getPersistentClass(), id));
+			session.delete(session.get(getPersistentClass(), id));
 			transaction.commit();
 		} catch (HibernateException e) {
 			if (transaction != null)
