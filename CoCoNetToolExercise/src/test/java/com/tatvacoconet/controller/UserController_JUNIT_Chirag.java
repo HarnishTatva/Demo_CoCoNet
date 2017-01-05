@@ -28,7 +28,7 @@ import com.tatvacoconet.entity.UserMasterChirag;
 public class UserController_JUNIT_Chirag {
 	
 	public static UserMasterChirag userMasterChirag = new UserMasterChirag("Chirag Purohit", "chirag@test.com", "Chirag!&789", 1, new Date(),"ck.jpeg", 123456789, "Cricket, Football, Chess", "Jamnagar", "GOTA", "","");
-	public static final String success = "SUCCESS";
+	public static final String success = "success";
 	public static final String deleted = "Deleted";
 	
 	public static final String URL = "/userChirag/";
@@ -51,24 +51,13 @@ public class UserController_JUNIT_Chirag {
 		assertThat(json.getString("success")).isEqualTo(success);
 	}
 	
-	/**
-	 *  Delete: Delete user record from DB.
-	 */
-	@Test
-	public void Test2_Delete(){
-		ResponseEntity<String> responseEntity = this.restTemplate.postForEntity(URL+"deleteUser", userMasterChirag.getUserid(), String.class);
-		String status = responseEntity.getBody(); 
-		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-		assertThat(status).contains(deleted);
-	}
-	
 	
 	/**
 	 *  List by Userid: Getting Edit page to edit by Userid.
 	 */
 	@Test
 	public void Test3_GetUserById(){
-		ResponseEntity<UserMasterChirag> responseEntity = this.restTemplate.postForEntity(URL+"getUser",  userMasterChirag.getUserid(), UserMasterChirag.class);
+		ResponseEntity<UserMasterChirag> responseEntity = this.restTemplate.postForEntity(URL+"getUser/{id}",  userMasterChirag.getUserid(), UserMasterChirag.class);
 		UserMasterChirag userMasterChirag = responseEntity.getBody(); 
 		
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
@@ -103,6 +92,17 @@ public class UserController_JUNIT_Chirag {
 		
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		assertThat(status).contains(success);
+	}
+	
+	/**
+	 *  Delete: Delete user record from DB.
+	 */
+	@Test
+	public void Test2_Delete(){
+		ResponseEntity<String> responseEntity = this.restTemplate.postForEntity(URL+"deleteUser", userMasterChirag.getUserid(), String.class);
+		String status = responseEntity.getBody(); 
+		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+		assertThat(status).contains(deleted);
 	}
 	
 	
