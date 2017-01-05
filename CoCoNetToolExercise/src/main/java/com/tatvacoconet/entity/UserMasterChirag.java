@@ -196,8 +196,7 @@ public class UserMasterChirag implements java.io.Serializable {
 		this.address = address;
 		this.createddate = createddate;
 		this.updateddate = updateddate;
-	}
-	
+	}	
 	
 
 }

@@ -55,7 +55,7 @@ public class UserController_JUNIT_Chirag {
 	/**
 	 *  List by Userid: Getting Edit page to edit by Userid.
 	 */
-	@Test
+	/*@Test
 	public void Test3_GetUserById(){
 		ResponseEntity<UserMasterChirag> responseEntity = this.restTemplate.postForEntity(URL+"getUser/{id}",  userMasterChirag.getUserid(), UserMasterChirag.class);
 		UserMasterChirag userMasterChirag = responseEntity.getBody(); 
@@ -63,7 +63,7 @@ public class UserController_JUNIT_Chirag {
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		assertThat(userMasterChirag.getFname()).isEqualTo(userMasterChirag.getFname());
 		assertThat(userMasterChirag.getUserid()).isEqualTo(userMasterChirag.getUserid());
-	}
+	}*/
 	
 	
 	/**
