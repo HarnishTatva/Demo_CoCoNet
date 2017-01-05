@@ -49,6 +49,13 @@ module HarshalDemo {
         		.catch(this.fail);
 	    }
         
+        public getUserCountPerCity_harshal($scope: ICOCOScope_harshal): ng.IHttpPromise<string[]> {
+            return this._http.get('/user_harshal/getUserCountPerCity_harshal')
+                .then(this.success)
+                .catch(this.fail);
+        }
+        
+        
         
         private success: (response: any) => {} = (response) => response.data;
 

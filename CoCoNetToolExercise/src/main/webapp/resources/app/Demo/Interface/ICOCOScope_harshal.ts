@@ -13,5 +13,14 @@ module HarshalDemo {
     	userForm_harshal : any;
         
         status : any;
+        
+        barChartData_harshal : any;
+        barChartLabel_harshal : any;
+        barChartSeries_harshal : any;
+        barChartOption_harshal : any;
+        
+        pieChartData_harshal : any;
+        pieChartLabel_harshal : any;
+        pieChartOption_harshal : any;
     }
 }

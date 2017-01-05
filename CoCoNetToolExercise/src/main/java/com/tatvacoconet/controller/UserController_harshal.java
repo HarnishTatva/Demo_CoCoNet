@@ -3,6 +3,7 @@ package com.tatvacoconet.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -150,5 +151,50 @@ public class UserController_harshal {
 		return new ResponseEntity<String>(new Gson().toJson("success"), HttpStatus.OK);
 	}
 	
+	
+	@RequestMapping(value = "/userDashboard_harshal", method = RequestMethod.GET)
+	public ModelAndView userDashboard_harshal(){
+		ModelAndView mav = new ModelAndView("userDashboard_harshal");
+		logger.info("userDashboard_harshal loading");
+		return mav;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/getUserCountPerCity_harshal", method = RequestMethod.GET)
+	public ResponseEntity<List<String>> getUserCountPerCity_harshal() {
+		
+		List userCityCountList = userService_harshal.getUserCountPerCity_harshal();
+		
+		StringBuilder cityData = new StringBuilder();
+		StringBuilder userCount = new StringBuilder();
+		
+		cityData.append("[");
+		userCount.append("[");
+		for (int i = 0; i < userCityCountList.size(); i++)
+		{
+			Object[] row = (Object[]) userCityCountList.get(i);
+
+			if (i == userCityCountList.size()-1)
+			{
+				cityData.append(" \"" + row[0] + "\" ");
+				userCount.append(" \"" + row[1] + "\" ");
+			}
+			else
+			{
+				cityData.append(" \"" + row[0] + "\", ");
+				userCount.append(" \"" + row[1] + "\", ");
+			}
+		}
+		cityData.append("]");
+		userCount.append("]");
+
+		List<String> responseList = new ArrayList<String>();
+		responseList.add(cityData.toString());
+		responseList.add(userCount.toString());
+		
+
+		logger.info("User count per city get successfully"); 
+		return new ResponseEntity<List<String>>(responseList, HttpStatus.OK);
+	}
 	
 }

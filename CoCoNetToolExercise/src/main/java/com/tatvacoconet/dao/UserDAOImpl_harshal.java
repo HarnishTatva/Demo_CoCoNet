@@ -1,8 +1,14 @@
 package com.tatvacoconet.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tatvacoconet.entity.UserMaster_harshal;
@@ -14,6 +20,11 @@ import com.tatvacoconet.entity.UserMaster_harshal;
 @Repository
 public class UserDAOImpl_harshal extends TatvaSoftDAOImpl<UserMaster_harshal, Integer> implements IUserDAO_harshal {
   
+	private Logger logger = LoggerFactory.getLogger(UserDAOImpl_harshal.class);
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
  	public UserDAOImpl_harshal() {
 		super(UserMaster_harshal.class);
 	}
@@ -47,6 +58,22 @@ public class UserDAOImpl_harshal extends TatvaSoftDAOImpl<UserMaster_harshal, In
 	@Override
 	public UserMaster_harshal findUserById_harshal(Integer userId) {
 		return find(userId);
+	}
+
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getUserCountPerCity_harshal() {
+		List searchedList = new ArrayList<>();
+		
+		try{
+			Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT user_city, count(*) from user_harshal GROUP BY user_city");
+			searchedList = query.list();
+	
+		}catch(Exception e){
+			logger.error("Error from getUserCountPerCity_harshal : " + e.getMessage());
+		}
+		return searchedList;
 	}
 	  
 }

@@ -99,6 +99,37 @@ var HarshalDemo;
                 });
             }
         };
+        UserController_harshal.prototype.userGraphData = function () {
+            var _this = this;
+            this.userService_harshal.getUserCountPerCity_harshal(this.$scope).then(function (data) {
+                console.log(data);
+                _this.$scope.pieChartLabel_harshal = JSON.parse(data[0]);
+                _this.$scope.pieChartData_harshal = JSON.parse(data[1]);
+                _this.$scope.pieChartOption_harshal = {
+                    title: {
+                        display: true,
+                        text: 'User per City Pie Chart'
+                    }
+                };
+                _this.$scope.barChartLabel_harshal = JSON.parse(data[0]);
+                _this.$scope.barChartSeries_harshal = ['Users'];
+                _this.$scope.barChartData_harshal = JSON.parse(data[1]);
+                _this.$scope.barChartOption_harshal = {
+                    title: {
+                        display: true,
+                        text: 'User per City Bar Chart'
+                    },
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    stepSize: 1
+                                }
+                            }]
+                    }
+                };
+            });
+        };
         // Init
         UserController_harshal.prototype.Init = function () {
             _super.prototype.BaseInit.call(this);
