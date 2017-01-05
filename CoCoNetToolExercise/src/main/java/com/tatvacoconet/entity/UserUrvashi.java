@@ -150,7 +150,25 @@ public class UserUrvashi {
 	public void setTechArray(String[] techArray) {
 		this.techArray = techArray;
 	}
+	public UserUrvashi() {
+		// TODO Auto-generated constructor stub
+	}
 	
+	public UserUrvashi(String username, String password, String email,
+			String address, String country, String gender, String technology,
+			Date dateOfBirth, int phone, String image, String[] techArray) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.country = country;
+		this.gender = gender;
+		this.technology = technology;
+		this.dateOfBirth = dateOfBirth;
+		this.phone = phone;
+		this.image = image;
+		this.techArray = techArray;
+	}
 	
 
 }

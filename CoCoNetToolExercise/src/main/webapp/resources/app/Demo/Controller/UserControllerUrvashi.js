@@ -36,7 +36,7 @@ var DemoUrvashi;
                         this.fileUploadServiceUrvashi.uploadFileToUrl(file, uploadUrl);
                         this.$scope.user.image = name;
                         this.userServiceUrvashi.updateUser(this.$scope.user).then(function (data) {
-                            if (data == 'success') {
+                            if (data.success == 'success') {
                                 _this.$window.location.href = "UsersListUrvashi";
                             }
                         });
