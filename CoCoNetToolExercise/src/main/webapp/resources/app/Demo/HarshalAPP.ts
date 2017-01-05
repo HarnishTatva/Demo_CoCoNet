@@ -4,5 +4,5 @@
 
 module HarshalDemo {
     'use strict';
-    var HarshalDemo = angular.module('HarshalDemo', ['ui.bootstrap', 'ngSanitize']);
+    var HarshalDemo = angular.module('HarshalDemo', ['ui.bootstrap', 'ngSanitize', 'chart.js']);
 }

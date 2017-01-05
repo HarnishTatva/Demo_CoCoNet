@@ -118,6 +118,40 @@ module HarshalDemo {
         	}
         }
         
+        userGraphData() {
+            this.userService_harshal.getUserCountPerCity_harshal(this.$scope).then((data) => {
+                // pie chart configuration
+                this.$scope.pieChartLabel_harshal = JSON.parse(data[0]);
+                this.$scope.pieChartData_harshal = JSON.parse(data[1]);
+                this.$scope.pieChartOption_harshal = {
+                  title: {
+                        display: true,
+                        text: 'User per City Pie Chart'
+                    }
+                };
+                
+                // bar chart configuration
+                this.$scope.barChartLabel_harshal = JSON.parse(data[0]);
+                this.$scope.barChartSeries_harshal = ['Users'];
+                this.$scope.barChartData_harshal= JSON.parse(data[1]);
+                this.$scope.barChartOption_harshal = {
+                  title: {
+                        display: true,
+                        text: 'User per City Bar Chart'
+                    },
+                    scales: {
+                    yAxes: [{
+                            ticks: {
+                                min: 0,
+                                stepSize: 1
+                            }
+                        }]
+                    }
+                };
+            
+            });
+        }
+        
         // Init
         public Init() {
             super.BaseInit();

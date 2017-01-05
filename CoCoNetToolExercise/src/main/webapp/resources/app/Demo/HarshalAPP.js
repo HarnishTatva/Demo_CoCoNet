@@ -3,5 +3,5 @@
 var HarshalDemo;
 (function (HarshalDemo_1) {
     'use strict';
-    var HarshalDemo = angular.module('HarshalDemo', ['ui.bootstrap', 'ngSanitize']);
+    var HarshalDemo = angular.module('HarshalDemo', ['ui.bootstrap', 'ngSanitize', 'chart.js']);
 })(HarshalDemo || (HarshalDemo = {}));

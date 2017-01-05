@@ -46,52 +46,19 @@
             </div>
         </div>
     </div>
-    <div class="container" ng-controller="userController_harshal as ctrl" ng-init="ctrl.userList()">
+    <div class="container" ng-controller="userController_harshal as ctrl" ng-init="ctrl.userGraphData()">
         <div class="row">
-            <div class="col-lg-12">
-                <h2>Manage Users</h2>
-                <hr />
-                <div class="alert alert-success" ng-show="status != undefined && status != '' && status != null">
-                  <strong>Success!</strong> <span ng-show="status == 'save'">User created successfully.</span>
-                  <span ng-show="status == 'update'">User updated successfully.</span>
-                  <span ng-show="status == 'delete'" ng-init="ctrl.userList()">User deleted successfully.</span>
-				</div>	
-                <hr />
-                <a class="btn btn-info" href="${pageContext.request.contextPath}/user_harshal/userForm_harshal"">Add new</a>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-lg-12">
-
-                <table class="table table-striped table-hover table-responsive" >
-                    <thead>
-                        <tr>
-                            <th>Full name</th>
-                            <th>Email </th>
-                            <th>Date Of Birth</th>
-                            <th>Phone number</th>
-                            <th>Hobbies</th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>User Image</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<tr ng-repeat="user in users">
-                            <td>{{user.fullname}}</td>
-                            <td>{{user.email}}</td>
-                            <td>{{user.dateofbirth | date:'dd-MM-yyyy'}}</td>
-                            <td>{{user.mobilenumber}}</td>
-                            <td>{{user.hobby}}</td>
-                            <td>{{user.city}}</td>
-                            <td>{{user.address}}</td>
-                            <td><img src="${pageContext.request.contextPath}/resources/images_harshal/{{user.profileimage}}" class="img-thumbnail" style="width: 50px;height: 50px;" alt="userImage" /></td>
-                            <td><a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/user_harshal/editUserForm_harshal?userId={{user.id}}">Edit</a> &nbsp; <a class="btn btn-sm btn-danger" ng-click="ctrl.userDelete(user.id);" >Delete</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+        	<div class="col-lg-6">
+        	<br/>
+			    <canvas id="pieChart_harshal" class="chart chart-pie"
+				  chart-data="pieChartData_harshal" chart-labels="pieChartLabel_harshal" chart-options="pieChartOption_harshal" height="240">
+				 </canvas>
+			</div>
+            <div class="col-lg-6">
+            <br/>
+            	<canvas id="barChart_harshal" class="chart chart-bar"
+				  chart-data="barChartData_harshal" chart-labels="barChartLabel_harshal" chart-series="barChartSeries_harshal" chart-options="barChartOption_harshal" height="240">
+				</canvas>
             </div>
         </div>
     </div>

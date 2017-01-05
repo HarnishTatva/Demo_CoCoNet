@@ -39,6 +39,11 @@ var HarshalDemo;
                 .then(this.success)
                 .catch(this.fail);
         };
+        UserService_harshal.prototype.getUserCountPerCity_harshal = function ($scope) {
+            return this._http.get('/user_harshal/getUserCountPerCity_harshal')
+                .then(this.success)
+                .catch(this.fail);
+        };
         UserService_harshal.$inject = ["$http", "$q"];
         return UserService_harshal;
     }());
