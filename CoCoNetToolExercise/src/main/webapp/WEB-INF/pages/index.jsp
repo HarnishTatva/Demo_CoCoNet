@@ -7,12 +7,10 @@
 
 	<h2>Main Demo Page</h2>	
 	<hr/>
-	<h3>Test Changes</h3>
-	<ul>
-		<li><a href="UsersListUrvashi">Test Urvashi</a></li>
-		<li><a href="userChirag/userList">Test Chirag</a></li>
-		<li><a href="${pageContext.request.contextPath}/user_harshal/usersList_harshal">Test Harshal</a></li>
-		<li><a href="${pageContext.request.contextPath}/chandni/chandni-user-list">Test Chandni</a></li>
-	</ul>
+	<h3><a href="employeelist">Test Parth</a></h3>
+	<h3><a href="addUserUrvashi">Test Urvashi</a></h3>
+	<h3><a href="userChirag/userList">Test Chirag</a></h3>
+	<h3><a href="${pageContext.request.contextPath}/user_harshal/usersList_harshal">Test _HarShaL_</a></h3>
+	<h3><a href="${pageContext.request.contextPath}/chandni/chandni-user-list">Test Chandni</a></h3>
 </body>
 </html>
