@@ -9,12 +9,7 @@ module Demo {
         constructor($scope: ICOCOScope) {
             this.$baseScope = $scope;
         }
-
-        public BaseInit() {
-
-        }
-
     }
-
+    
     angular.module("Demo").controller("baseController", BaseController);
 }

@@ -5,8 +5,6 @@ var Demo;
         function BaseController($scope) {
             this.$baseScope = $scope;
         }
-        BaseController.prototype.BaseInit = function () {
-        };
         return BaseController;
     }());
     Demo.BaseController = BaseController;
