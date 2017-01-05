@@ -24,7 +24,7 @@ public class TatvaSoftApplication extends SpringBootServletInitializer {
 	
 	public static void main(String[] args) {
         SpringApplication.run(TatvaSoftApplication.class, args);
-        logger.info("TatvaSoft Spring Boot Application");
+        logger.info("TatvaSoft Spring Boot Application Running");
     }
 
 }
