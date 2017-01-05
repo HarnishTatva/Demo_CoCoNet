@@ -1,5 +1,7 @@
 package com.tatvacoconet.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,8 +39,8 @@ public class UserMasterChirag implements java.io.Serializable {
 	protected long gender;
 
 	/* birthDate */
-	@Column(name = "birthDate", nullable = true, length = 75)
-	protected String birthdate;
+	@Column(name = "birthDate")
+	protected Date birthdate;
 
 	/* img */
 	@Column(name = "imageFilePath", nullable = true, length = 500)
@@ -120,15 +122,17 @@ public class UserMasterChirag implements java.io.Serializable {
 		this.gender = gender;
 	}
 
-	public String getBirthdate() {
+	
+
+	
+	public Date getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(String birthdate) {
+	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 
-	
 	public long getPhone() {
 		return phone;
 	}
