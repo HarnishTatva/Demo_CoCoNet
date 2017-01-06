@@ -63,7 +63,8 @@
             </div>
         </div>
         <br/>
-        <div class="row">
+        <div class="row"> 
+        
             <div class="col-lg-12">
           	<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels"></canvas> 
 			
