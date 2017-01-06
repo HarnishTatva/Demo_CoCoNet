@@ -7,6 +7,8 @@ module Demo {
         technologies: string[];
         mydateOfBirth: string;
         myFile: any;
-        employeeMaster: EmployeeMasterParth;               
+        employeeMaster: EmployeeMasterParth;
+        labels:string[];
+        data:number[];
     }
 }

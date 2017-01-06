@@ -1,6 +1,4 @@
 /// <reference path='../../_all.ts' />
-
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -12,27 +10,27 @@ var Demo;
         __extends(UserControllerChirag, _super);
         /// Conctructor
         function UserControllerChirag($scope, $location, userServiceChirag, $window, $modal, $filter, fileUploadServiceChirag) {
-            var _this = _super.call(this, $scope) || this;
-            _this.$scope = $scope;
-            _this.$location = $location;
-            _this.userServiceChirag = userServiceChirag;
-            _this.$window = $window;
-            _this.$modal = $modal;
-            _this.$filter = $filter;
-            _this.fileUploadServiceChirag = fileUploadServiceChirag;
-            $scope.vm = _this;
+            var _this = this;
+            _super.call(this, $scope);
+            this.$scope = $scope;
+            this.$location = $location;
+            this.userServiceChirag = userServiceChirag;
+            this.$window = $window;
+            this.$modal = $modal;
+            this.$filter = $filter;
+            this.fileUploadServiceChirag = fileUploadServiceChirag;
+            $scope.vm = this;
             $scope.hobbies = [];
             $scope.isImageRequired = true;
-            _this.status = _this.$location.search().status;
-            if (!angular.isUndefined(_this.status) && _this.status != null && _this.status != "") {
-                _this.$scope.status = _this.status.trim();
+            this.status = this.$location.search().status;
+            if (!angular.isUndefined(this.status) && this.status != null && this.status != "") {
+                this.$scope.status = this.status.trim();
             }
-            _this.userMasterList = _this.$scope.userMasterList = new Array();
-            _this.userServiceChirag.GetUserList().then(function (data) {
+            this.userMasterList = this.$scope.userMasterList = new Array();
+            this.userServiceChirag.GetUserList().then(function (data) {
                 _this.userMasterList = data;
                 $scope.vm = data;
             });
-            return _this;
         }
         UserControllerChirag.prototype.selectHobbies = function (hobbies) {
             if (this.$scope.hobbies.indexOf(hobbies) > -1) {
@@ -102,17 +100,17 @@ var Demo;
                 _this.user.birthdate = _this.$filter('date')(data.birthdate, 'yyyy-MM-dd');
             });
         };
+        UserControllerChirag.$inject = [
+            '$scope',
+            '$location',
+            'userServiceChirag',
+            '$window',
+            '$modal',
+            '$filter',
+            'fileUploadServiceChirag'
+        ];
         return UserControllerChirag;
     }(Demo.BaseController));
-    UserControllerChirag.$inject = [
-        '$scope',
-        '$location',
-        'userServiceChirag',
-        '$window',
-        '$modal',
-        '$filter',
-        'fileUploadServiceChirag'
-    ];
     Demo.UserControllerChirag = UserControllerChirag;
     angular.module("Demo").controller("userControllerChirag", UserControllerChirag);
 })(Demo || (Demo = {}));

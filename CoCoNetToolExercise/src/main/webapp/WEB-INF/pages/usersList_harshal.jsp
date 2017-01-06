@@ -25,6 +25,7 @@
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/UserController_harshal.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/ModalInstanceController_harshal.js"></script>
 	
+	<script>localStorage._url = "${pageContext.request.contextPath}";</script>
 </head>
 <body ng-app="HarshalDemo">
     <div class="navbar navbar-default navbar-fixed-top">

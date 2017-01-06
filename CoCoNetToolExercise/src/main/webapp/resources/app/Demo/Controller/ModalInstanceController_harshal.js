@@ -15,13 +15,14 @@ var HarshalDemo;
             this.$modalInstance = $modalInstance;
             this.$window = $window;
             this.userService_harshal = userService_harshal;
+            this._url = localStorage._url;
         }
         ModalInstanceController_harshal.prototype.onConfirm = function (userId) {
             var _this = this;
             this.userService_harshal.deleteUser_harshal(this.$scope, userId).then(function (data) {
                 _this.$modalInstance.dismiss('cancel');
                 if (data == "Deleted") {
-                    _this.$window.location.href = "/user_harshal/usersList_harshal";
+                    _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal";
                 }
             });
         };

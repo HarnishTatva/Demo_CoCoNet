@@ -16,31 +16,37 @@ var Demo;
         }
         UserServiceChirag.prototype.GetEditPage = function (id) {
             return this._http.get('/userChirag/editUser/' + id)
-                .then(this.success)["catch"](this.fail);
+                .then(this.success)
+                .catch(this.fail);
         };
         UserServiceChirag.prototype.GetUserByID = function (id) {
             return this._http.get('/userChirag/getUser/' + id)
-                .then(this.success)["catch"](this.fail);
+                .then(this.success)
+                .catch(this.fail);
         };
         UserServiceChirag.prototype.GetUserList = function () {
             return this._http.get('/userChirag/getUserList')
-                .then(this.success)["catch"](this.fail);
+                .then(this.success)
+                .catch(this.fail);
         };
         UserServiceChirag.prototype.SaveUser = function ($scope, userMaster) {
             return this._http.post("/userChirag/saveUser/", userMaster)
-                .then(this.success)["catch"](this.fail);
+                .then(this.success)
+                .catch(this.fail);
         };
         UserServiceChirag.prototype.UpdateUser = function ($scope, userMaster) {
             return this._http.post("/userChirag/updateUser/", userMaster)
-                .then(this.success)["catch"](this.fail);
+                .then(this.success)
+                .catch(this.fail);
         };
         UserServiceChirag.prototype.DeleteUser = function ($scope, id) {
             return this._http.post('/userChirag/deleteUser', id)
-                .then(this.success)["catch"](this.fail);
+                .then(this.success)
+                .catch(this.fail);
         };
+        UserServiceChirag.$inject = ["$http", "$q"];
         return UserServiceChirag;
     }());
-    UserServiceChirag.$inject = ["$http", "$q"];
     Demo.UserServiceChirag = UserServiceChirag;
     angular.module("Demo").service("userServiceChirag", UserServiceChirag);
 })(Demo || (Demo = {}));

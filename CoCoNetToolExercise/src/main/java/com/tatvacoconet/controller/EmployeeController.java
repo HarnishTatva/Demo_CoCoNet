@@ -98,6 +98,11 @@ public class EmployeeController {
 		EmployeeMasterParth employee = employeeServiceParth.find(employeeId);
 		return new ResponseEntity<EmployeeMasterParth>(employee, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/employeechart", method = RequestMethod.GET)
+	public String employeeChart() {
+        return "EmployeeChart";
+	}
 	
 	
 	@RequestMapping(value = "/imageUpload", method = RequestMethod.POST)

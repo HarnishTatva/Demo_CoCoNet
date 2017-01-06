@@ -9,14 +9,12 @@ var DemoChandni;
     var ModalInstanceChandniController = (function (_super) {
         __extends(ModalInstanceChandniController, _super);
         function ModalInstanceChandniController($scope, $modalInstance, $window, userChandniService) {
-            var _this = _super.call(this, $scope) || this;
-            _this.$scope = $scope;
-            _this.$modalInstance = $modalInstance;
-            _this.$window = $window;
-            _this.userChandniService = userChandniService;
-            return _this;
+            _super.call(this, $scope);
+            this.$scope = $scope;
+            this.$modalInstance = $modalInstance;
+            this.$window = $window;
+            this.userChandniService = userChandniService;
         }
-        
         ModalInstanceChandniController.prototype.onConfirm = function (id) {
             var _this = this;
             this.userChandniService.deleteUser(this.$scope, id).then(function (data) {
@@ -32,9 +30,9 @@ var DemoChandni;
             this.$modalInstance.dismiss('cancel');
         };
         ;
+        ModalInstanceChandniController.$inject = ['$scope', '$modalInstance', '$window', 'userChandniService'];
         return ModalInstanceChandniController;
     }(DemoChandni.BaseChandniController));
-    ModalInstanceChandniController.$inject = ['$scope', '$modalInstance', '$window', 'userChandniService'];
     DemoChandni.ModalInstanceChandniController = ModalInstanceChandniController;
     angular.module("DemoChandni").controller("modalInstanceChandniController", ModalInstanceChandniController);
 })(DemoChandni || (DemoChandni = {}));

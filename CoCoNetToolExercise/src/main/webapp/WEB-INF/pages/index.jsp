@@ -3,6 +3,7 @@
 <head>
     <title>CoCoNet DEMO</title>
 </head>
+<script>localStorage._url = "${pageContext.request.contextPath}";</script>
 <body>
 
 	<h2>Main Demo Page</h2>	

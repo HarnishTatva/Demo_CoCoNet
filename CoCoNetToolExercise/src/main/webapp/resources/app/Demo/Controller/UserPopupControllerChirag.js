@@ -16,9 +16,9 @@ var Demo;
         UserPopupControllerChirag.prototype.cancel = function () {
             this.$modalInstance.dismiss('cancel');
         };
+        UserPopupControllerChirag.$inject = ['$modalInstance', "$http", "$q", '$window'];
         return UserPopupControllerChirag;
     }());
-    UserPopupControllerChirag.$inject = ['$modalInstance', "$http", "$q", '$window'];
     Demo.UserPopupControllerChirag = UserPopupControllerChirag;
     angular.module("Demo").controller("userPopupControllerChirag", UserPopupControllerChirag);
 })(Demo || (Demo = {}));

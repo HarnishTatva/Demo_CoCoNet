@@ -10,15 +10,14 @@ var DemoChandni;
         __extends(UserAddEditChandniController, _super);
         /// Conctructor
         function UserAddEditChandniController($scope, $location, $window, userChandniService, fileUploadChandniService) {
-            var _this = _super.call(this, $scope) || this;
-            _this.$scope = $scope;
-            _this.$location = $location;
-            _this.$window = $window;
-            _this.userChandniService = userChandniService;
-            _this.fileUploadChandniService = fileUploadChandniService;
-            _this._location = $location;
-            _this.$scope.flag = false;
-            return _this;
+            _super.call(this, $scope);
+            this.$scope = $scope;
+            this.$location = $location;
+            this.$window = $window;
+            this.userChandniService = userChandniService;
+            this.fileUploadChandniService = fileUploadChandniService;
+            this._location = $location;
+            this.$scope.flag = false;
         }
         // Init
         UserAddEditChandniController.prototype.Init = function () {
@@ -44,7 +43,6 @@ var DemoChandni;
             ];
             this.$scope.arrayHobbies = [];
         };
-        
         UserAddEditChandniController.prototype.convertDate = function (timestamp) {
             var d = new Date(timestamp);
             var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
@@ -141,15 +139,15 @@ var DemoChandni;
                 this.$scope.userChandni.userGender = value;
             }
         };
+        UserAddEditChandniController.$inject = [
+            '$scope',
+            '$location',
+            '$window',
+            'userChandniService',
+            'fileUploadChandniService'
+        ];
         return UserAddEditChandniController;
     }(DemoChandni.BaseChandniController));
-    UserAddEditChandniController.$inject = [
-        '$scope',
-        '$location',
-        '$window',
-        'userChandniService',
-        'fileUploadChandniService'
-    ];
     DemoChandni.UserAddEditChandniController = UserAddEditChandniController;
     angular.module("DemoChandni").controller("userAddEditChandniController", UserAddEditChandniController);
 })(DemoChandni || (DemoChandni = {}));
