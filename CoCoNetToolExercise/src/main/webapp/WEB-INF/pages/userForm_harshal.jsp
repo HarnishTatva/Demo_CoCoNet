@@ -28,7 +28,9 @@
     	.ng-touched.ng-invalid.ng-invalid-required{
     		border: 1px solid red;
     	}
-    </style>    
+    </style>   
+    
+    <script>localStorage._url = "${pageContext.request.contextPath}";</script> 
 </head>
 <body ng-app="HarshalDemo">
     <div class="navbar navbar-default navbar-fixed-top">
