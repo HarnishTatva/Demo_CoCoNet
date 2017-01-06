@@ -65,8 +65,7 @@
         <br/>
         <div class="row">
             <div class="col-lg-12">
-          	<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels">
-			</canvas> 
+          	<canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels"></canvas> 
 			
 			<canvas id="pie" class="chart chart-pie"  chart-data="data" chart-labels="labels" chart-options="options"></canvas>
 			
