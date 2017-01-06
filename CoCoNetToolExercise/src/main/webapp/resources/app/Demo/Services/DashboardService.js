@@ -16,12 +16,11 @@ var Demo;
         }
         DashboardService.prototype.GetDashboardWidgets = function ($scope) {
             return this._http.get('/widget/dashboardWidgets')
-                .then(this.success)
-                .catch(this.fail);
+                .then(this.success)["catch"](this.fail);
         };
-        DashboardService.$inject = ["$http", "$q"];
         return DashboardService;
     }());
+    DashboardService.$inject = ["$http", "$q"];
     Demo.DashboardService = DashboardService;
     angular.module("Demo").service("dashboardService", DashboardService);
 })(Demo || (Demo = {}));

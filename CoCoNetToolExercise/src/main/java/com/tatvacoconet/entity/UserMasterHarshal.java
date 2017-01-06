@@ -33,7 +33,7 @@ public class UserMasterHarshal {
 	private String email;
 	
 	@Column(name = "user_gender")
-	private boolean gender;
+	private String gender;
 	
 	@Column(name = "user_hobby")
 	private String hooby;
@@ -84,16 +84,16 @@ public class UserMasterHarshal {
 		this.email = email;
 	}
 
-	public boolean isGender() {
+	public String getHooby() {
+		return hooby;
+	}
+
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(boolean gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getHooby() {
-		return hooby;
 	}
 
 	public void setHooby(String hooby) {
