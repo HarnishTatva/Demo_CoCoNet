@@ -15,15 +15,15 @@ var Demo;
             this.$q = $q;
         }
         UserServiceChirag.prototype.GetEditPage = function (id) {
-            return this._http.get('http://localhost:8898/userChirag/editUser/' + id)
+            return this._http.get('/userChirag/editUser/' + id)
                 .then(this.success)["catch"](this.fail);
         };
         UserServiceChirag.prototype.GetUserByID = function (id) {
-            return this._http.get('http://localhost:8898/userChirag/getUser/' + id)
+            return this._http.get('/userChirag/getUser/' + id)
                 .then(this.success)["catch"](this.fail);
         };
         UserServiceChirag.prototype.GetUserList = function () {
-            return this._http.get('http://localhost:8898/userChirag/getUserList')
+            return this._http.get('/userChirag/getUserList')
                 .then(this.success)["catch"](this.fail);
         };
         UserServiceChirag.prototype.SaveUser = function ($scope, userMaster) {

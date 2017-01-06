@@ -62,13 +62,13 @@ module Demo {
 	            
             	if(flag == 1){            			
             			this.userServiceChirag.SaveUser(this.$scope, this.user).then((data) => {
-            				if(data == 'success'){
+            				if(data.success == 'success'){
             					this.$window.location.href="/userChirag/userList";
             		    	}
                        	});
 	            } else if (flag == 0) {
 	            		this.userServiceChirag.UpdateUser(this.$scope, this.user).then((data) => {
-            				if(data == 'success'){
+            				if(data.success == 'success'){
             					this.$window.location.href="/userChirag/userList";
             		    	}
                        	});

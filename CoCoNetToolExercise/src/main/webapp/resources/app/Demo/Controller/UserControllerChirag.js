@@ -49,14 +49,14 @@ var Demo;
             }
             if (flag == 1) {
                 this.userServiceChirag.SaveUser(this.$scope, this.user).then(function (data) {
-                    if (data == 'success') {
+                    if (data.success == 'success') {
                         _this.$window.location.href = "/userChirag/userList";
                     }
                 });
             }
             else if (flag == 0) {
                 this.userServiceChirag.UpdateUser(this.$scope, this.user).then(function (data) {
-                    if (data == 'success') {
+                    if (data.success == 'success') {
                         _this.$window.location.href = "/userChirag/userList";
                     }
                 });

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.tatvacoconet.entity.UserMasterChirag;
 import com.tatvacoconet.service.IUserChiragService;
 
@@ -91,9 +92,18 @@ public class UserControllerChirag {
 	 */	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public ResponseEntity<String> saveUser(@RequestBody UserMasterChirag userMaster) {	
+		if(userMaster != null){
 			userService.saveUser(userMaster);
-		logger.info("User saved successfully - userid : {}", userMaster.getUserid()); 
-		return new ResponseEntity<String>(new Gson().toJson("success"), HttpStatus.OK);
+		}else{
+			return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+		}
+		
+		JsonObject json = new JsonObject();
+		json.addProperty("userId", userMaster.getUserid());
+		json.addProperty("success", "success");
+		
+		logger.info("User saved successfully - userId : {}", userMaster.getUserid()); 
+		return new ResponseEntity<String>(new Gson().toJson(json), HttpStatus.OK);
 	}
 
 	

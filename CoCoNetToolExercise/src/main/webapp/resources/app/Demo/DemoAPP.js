@@ -2,7 +2,8 @@
 /// <reference path="../typings/angularjs/angular.d.ts" />
 
 
-module HarshalDemo {
+var Demo;
+(function (Demo_1) {
     'use strict';
-    var HarshalDemo = angular.module('HarshalDemo', ['ui.bootstrap', 'ngSanitize', 'chart.js']);
-}
+    var Demo = angular.module('Demo', ['ui.bootstrap', 'ngSanitize']);
+})(Demo || (Demo = {}));

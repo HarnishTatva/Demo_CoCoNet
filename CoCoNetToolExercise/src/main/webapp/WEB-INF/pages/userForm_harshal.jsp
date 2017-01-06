@@ -34,7 +34,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="${pageContext.request.contextPath}/user_harshal/usersList_harshal" class="navbar-brand">_HarShaL_ Application</a>
+                <a href="${pageContext.request.contextPath}/user_harshal/userDashboard_harshal" class="navbar-brand">_HarShaL_ Dashboard</a>
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

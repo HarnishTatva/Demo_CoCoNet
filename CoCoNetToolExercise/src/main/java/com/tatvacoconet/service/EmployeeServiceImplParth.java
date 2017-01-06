@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tatvacoconet.dao.IEmployeeDAOParth;
-import com.tatvacoconet.dao.IWidgetFormatDAO;
 import com.tatvacoconet.entity.EmployeeMasterParth;
-import com.tatvacoconet.entity.WidgetFormatMaster;
 
 /**
  * 

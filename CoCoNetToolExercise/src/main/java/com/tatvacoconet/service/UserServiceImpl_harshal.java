@@ -47,4 +47,10 @@ public class UserServiceImpl_harshal implements IUserService_harshal {
 		return userDAO_harshal.findUserById_harshal(userId);
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getUserCountPerCity_harshal() {
+		return userDAO_harshal.getUserCountPerCity_harshal();
+	}
+
 }

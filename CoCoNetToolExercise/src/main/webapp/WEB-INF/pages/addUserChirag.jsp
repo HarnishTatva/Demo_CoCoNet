@@ -3,8 +3,7 @@
 <head>
     <title>CoCoNet DEMO</title>   
     
-    
-   	<link href="https://bootswatch.com/cerulean/bootstrap.min.css" rel="stylesheet" />
+   	<link href="${pageContext.request.contextPath}/resources/content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://bootswatch.com/assets/css/custom.min.css" rel="stylesheet" />
     <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.css" rel="stylesheet" />
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
@@ -30,36 +29,7 @@
     
     
     
-    <style>
-		.username.ng-valid {
-			background-color: lightgreen;
-		}
-		
-		.username.ng-dirty.ng-invalid-required {
-			background-color: red;
-		}
-		
-		.username.ng-dirty.ng-invalid-minlength {
-			background-color: yellow;
-		}
-		
-		.email.ng-valid {
-			background-color: lightgreen;
-		}
-		
-		.email.ng-dirty.ng-invalid-required {
-			background-color: red;
-		}
-		
-		.email.ng-dirty.ng-invalid-email {
-			background-color: yellow;
-		}
-		/* Styles go here */
-		.highlight-current-date button {
-			background: aqua;
-		}
-	</style>
-
+   
 </head>
 <body ng-app="Demo">
 <%
@@ -94,7 +64,7 @@ if(userid!=null && userid!=""){
         <div class="row">
             <div class="col-lg-10">
                 <div class="well bs-component">
-                    <form class="form-horizontal" ng-submit="ctrl.onSave(<%=flag%>)" name="userForm">
+                    <form class="form-horizontal" ng-submit="userForm.$valid && ctrl.onSave(<%=flag%>)" name="userForm">
                         <fieldset>
                             <legend>Add or Edit User Details</legend>
 
