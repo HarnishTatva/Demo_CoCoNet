@@ -55,6 +55,12 @@
             <div class="col-lg-12">
                 <h2>Manage Users</h2>
                 <hr />
+                <div class="alert alert-success" ng-show="status != undefined && status != '' && status != null">
+                  <strong>Success!</strong> <span ng-show="status == 'save'">User created successfully.</span>
+                  <span ng-show="status == 'update'">User updated successfully.</span>
+                  <span ng-show="status == 'conflict'">User is already exist.</span>
+                  <span ng-show="status == 'delete'">User deleted successfully.</span>
+				</div>
                 <a href="addUser" class="btn btn-primary"
 						style="float: right; margin: 10px;">Add</a>
             </div>

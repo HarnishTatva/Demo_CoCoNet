@@ -22,6 +22,7 @@ public void saveUser(UserMasterChirag user);
 	
 	public UserMasterChirag findbyId(Long userid);
 	
+	public boolean isUserExist(UserMasterChirag userMaster);
 	
 }
 

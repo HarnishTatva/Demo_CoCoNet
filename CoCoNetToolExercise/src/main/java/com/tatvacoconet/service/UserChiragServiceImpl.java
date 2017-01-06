@@ -47,6 +47,9 @@ public class UserChiragServiceImpl implements IUserChiragService {
 		return userDAO.findbyId(userId);
 	}
 
-	
+	@Override
+	public boolean isUserExist(UserMasterChirag userMaster) {
+		return userDAO.isUserExist(userMaster);
+	}
 	
 }

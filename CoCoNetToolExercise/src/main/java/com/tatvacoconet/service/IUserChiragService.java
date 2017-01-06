@@ -21,7 +21,8 @@ public interface IUserChiragService {
 	
 	public UserMasterChirag findbyId(Long userid);
 	
-	
+	public boolean isUserExist(UserMasterChirag userMaster);
+
 	
 	
 }

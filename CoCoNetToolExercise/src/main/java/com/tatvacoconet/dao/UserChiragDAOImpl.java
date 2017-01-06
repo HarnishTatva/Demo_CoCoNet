@@ -51,6 +51,14 @@ public class UserChiragDAOImpl extends TatvaSoftDAOImpl<UserMasterChirag, Long> 
 	}
 	
 	
-
+	@Override
+	public boolean isUserExist(UserMasterChirag userMaster) {
+		boolean isFound = false;
+		UserMasterChirag userMasterChirag = findbyName("fname", userMaster.getFname());
+		if( userMasterChirag != null)
+			isFound = true;
+		
+		return isFound;
+	}
   
 }

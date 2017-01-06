@@ -8,5 +8,6 @@ module Demo {
     	myFile : any;
     	hobbies : string[];	
     	isImageRequired: boolean;
+    	status:any;
     }
 }

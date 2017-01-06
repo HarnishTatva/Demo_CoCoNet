@@ -18,4 +18,6 @@ public interface ITatvaSoftDAO<T,ID> {
     public List<T> findAll();
     
     public void delete(ID key);
+    
+    T findbyName(String col,String name);
 }

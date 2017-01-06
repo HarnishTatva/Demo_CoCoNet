@@ -92,13 +92,24 @@ public class UserControllerChirag {
 	 */	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public ResponseEntity<String> saveUser(@RequestBody UserMasterChirag userMaster) {	
+		
+		JsonObject json = new JsonObject();
+		
+		if (userService.isUserExist(userMaster)) {
+			logger.info("User with name " + userMaster.getFname()
+					+ " already exist");
+			json.addProperty("conflict", "conflict");
+			return new ResponseEntity<String>(new Gson().toJson(json),HttpStatus.CONFLICT);
+		}
+		
+		
 		if(userMaster != null){
 			userService.saveUser(userMaster);
 		}else{
 			return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 		}
 		
-		JsonObject json = new JsonObject();
+		
 		json.addProperty("userId", userMaster.getUserid());
 		json.addProperty("success", "success");
 		

@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,4 +138,26 @@ public abstract class TatvaSoftDAOImpl<T,ID extends Serializable> implements ITa
 			session.close();
 		}
     }
+	
+	 @Transactional(readOnly = true)
+	    public T findbyName(String colName,String colValue) {
+	    	Session session = this.sessionFactory.openSession();
+			Transaction transaction = null;
+			try{
+				transaction = session.beginTransaction();
+				T entities = findByNameCriteria(session,colName,colValue);
+				 return entities;
+			}finally{
+				 transaction.commit();
+				 session.close();
+			}
+	       
+	    }
+	 
+	 @SuppressWarnings("unchecked")
+	    protected T findByNameCriteria(Session session, String colName, String colValue) {
+	        Criteria criteria = session.createCriteria(getPersistentClass()).add(
+					Restrictions.eq(colName, colValue));
+			return (T) criteria.uniqueResult();
+	   }
 }
