@@ -65,9 +65,7 @@ module Demo {
         private success: (response: any) => {} = (response) => response.data;
 
         private fail: (error: any) => {} = (error) => {
-            var msg = error.data.description;
-            var reason = 'query for people failed.';
-            return this.$q.reject(msg);
+            return this.$q.reject(error.status);
         }
     }
 

@@ -68,15 +68,20 @@ module Demo {
 	                this.user.imageFilePath = name;
 	            }
 	            
+	                      
+	            
+	            
 	            
             	if(flag == 1){            			
-            			this.userServiceChirag.SaveUser(this.$scope, this.user).then((data) => {
-            				if(data.success == 'success'){
+            			this.userServiceChirag.SaveUser(this.$scope, this.user).then((data) =>{
+        	                if(data.success == 'success'){
             					this.$window.location.href="/userChirag/userList#/?status=save";
-            		    	}else if(data.conflict == 'conflict'){
-            		    		this.$window.location.href="/userChirag/userList#/?status=conflict";
             		    	}
-                       	});
+        	               }).catch(err =>{
+        	            	   if(err == 409){
+               		    		this.$window.location.href="/userChirag/userList#/?status=conflict";
+               		    	}
+        	               });
 	            } else if (flag == 0) {
 	            		this.userServiceChirag.UpdateUser(this.$scope, this.user).then((data) => {
             				if(data == 'success'){

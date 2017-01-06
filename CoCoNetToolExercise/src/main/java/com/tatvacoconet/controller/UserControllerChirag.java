@@ -99,6 +99,7 @@ public class UserControllerChirag {
 			logger.info("User with name " + userMaster.getFname()
 					+ " already exist");
 			json.addProperty("conflict", "conflict");
+			json.addProperty("userId", userMaster.getUserid());
 			return new ResponseEntity<String>(new Gson().toJson(json),HttpStatus.CONFLICT);
 		}
 		
