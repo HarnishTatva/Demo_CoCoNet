@@ -45,7 +45,7 @@ public class UserChandniService implements IUserChandniService
 	}
 	
 	@Override
-	public boolean findUserByEmail(String email) {
+	public UserMasterChandni findUserByEmail(String email) {
 		return userDAO.findUserByEmail(email);
 	}
 }

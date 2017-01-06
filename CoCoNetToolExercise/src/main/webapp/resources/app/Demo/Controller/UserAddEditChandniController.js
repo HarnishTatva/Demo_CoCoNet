@@ -51,7 +51,7 @@ var DemoChandni;
         };
         UserAddEditChandniController.prototype.onSave = function (formIsValid) {
             var _this = this;
-            if (!this.$scope.flag) {
+            if (!this.$scope.flag && this.$scope.userForm.$valid) {
                 this.data = this.$scope.userChandni;
                 if (this.$scope.userChandni.userId == "") {
                     this.data.userId = 0;
@@ -59,7 +59,8 @@ var DemoChandni;
                 else {
                     this.data.userId = this.$scope.userChandni.userId;
                 }
-                this.data.userDob = new Date(document.getElementById("txtDob").value);
+                var x = angular.element(document.getElementById("txtDob"));
+                this.data.userDob = x.val();
                 if (this.$scope.userChandni.userFullName != "" && this.$scope.userChandni.userFullName != undefined) {
                     var fullname = this.$scope.userChandni.userFullName.split(' ');
                     this.data.userFirstName = fullname[0] == undefined ? "First" : fullname[0];

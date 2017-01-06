@@ -10,5 +10,5 @@ public interface IUserChandniService {
 	void createUser(UserMasterChandni user);
 	void updateUser(UserMasterChandni user);
 	UserMasterChandni find(Integer userId);
-	boolean findUserByEmail(String email);
+	UserMasterChandni findUserByEmail(String email);
 }

@@ -44,6 +44,12 @@ public class HomeChandniController {
 	@Autowired
 	private IUserChandniService userService;
 	
+	@RequestMapping(value = "/hello-user", method = RequestMethod.GET)
+	public ResponseEntity<String> HelloUser(@RequestParam(value = "username", required = false) String username) {
+		String text = "Welcome " + username;
+		return new ResponseEntity<String>(text, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/chandni-user-list", method = RequestMethod.GET)
 	public String userList()
 	{		
@@ -84,7 +90,7 @@ public class HomeChandniController {
 	 */	
 	@RequestMapping(value = { "/chandni-user-form" }, method = RequestMethod.GET)
 	public ModelAndView userForm(@RequestParam(value="id", required=false) String id){
-
+		logger.info(">>>>>>>>>>>>>>>>>>>>id " + id);
 		ModelAndView mav = new ModelAndView();
 		if(id != null){
 			UserMasterChandni model = userService.find(Integer.parseInt(id));
@@ -121,9 +127,17 @@ public class HomeChandniController {
 	
 	@RequestMapping(value = "/findUserByEmail", method = RequestMethod.GET)
 	public ResponseEntity<String> findUserByEmail(@RequestParam(value="email") String email) {
-		logger.info("email >>>>>> " + email);
-		boolean response = userService.findUserByEmail(email);
-		return new ResponseEntity<String>(new Gson().toJson(response), HttpStatus.OK);
+		UserMasterChandni response = userService.findUserByEmail(email);
+		if(response != null){
+			return new ResponseEntity<String>(new Gson().toJson(true), HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(new Gson().toJson(false), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getUserByEmail", method = RequestMethod.GET)
+	public ResponseEntity<UserMasterChandni> getUserByEmail(@RequestParam(value="email") String email) {
+		UserMasterChandni response = userService.findUserByEmail(email);
+		return new ResponseEntity<UserMasterChandni>(response, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/userImageUpload", method = RequestMethod.POST)

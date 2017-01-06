@@ -129,6 +129,25 @@ import com.sun.media.jfxmedia.logging.Logger;
 	public UserMasterChandni() {
 	}
 	
+	public UserMasterChandni(int userId,String userFirstName, String userLastName, String userPassword, Byte userGender, String userEmail,
+			String userPhoneNumber, String userImage, String userHobbies, String userCity, String userAddress, Date createdOn, Date updatedOn, Date dob) {
+		// TODO Auto-generated constructor stub
+		this.userId = userId;
+		this.userFirstName = userFirstName;
+		this.userLastName = userLastName;
+		this.userPassword = userPassword;
+		this.userGender = userGender;
+		this.userEmail = userEmail;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userImage = userImage;
+		this.userHobbies = userHobbies;
+		this.userCity = userCity;
+		this.userAddress = userAddress;
+		this.createdOn = createdOn;
+		this.updatedOn = updatedOn;
+		this.userDob = dob;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
  	@Column(name = "user_id")
