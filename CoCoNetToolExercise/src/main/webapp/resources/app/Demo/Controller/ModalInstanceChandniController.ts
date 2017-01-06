@@ -10,6 +10,7 @@ module DemoChandni {
             super($scope);
         }
 
+
         onConfirm(id: any): void {
             this.userChandniService.deleteUser(this.$scope, id).then((data) => {
                 this.$modalInstance.dismiss('cancel');

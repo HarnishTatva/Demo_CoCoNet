@@ -69,7 +69,6 @@ module DemoChandni {
                 var x = angular.element(document.getElementById("txtDob"));
                 this.data.userDob = x.val();
 
-
                 if (this.$scope.userChandni.userFullName != "" && this.$scope.userChandni.userFullName != undefined) {
                     var fullname = this.$scope.userChandni.userFullName.split(' ');
                     this.data.userFirstName = fullname[0] == undefined ? "First" : fullname[0];

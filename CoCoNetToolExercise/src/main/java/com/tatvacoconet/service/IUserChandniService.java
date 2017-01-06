@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tatvacoconet.entity.UserMasterChandni;
 
+
 public interface IUserChandniService {
 	List<UserMasterChandni> getUserList();
 	void deleteUser(Integer userId);

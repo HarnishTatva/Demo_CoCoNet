@@ -47,6 +47,7 @@ public class UserController_chandniTest {
 		assertThat(body).isEqualTo("Welcome Chandni");
 	}
 	
+	
 	@Test
 	public void test2UserSave_chandni(){
 		ResponseEntity<String> responseEntity = this.restTemplate.postForEntity("/chandni/createUser", userObj, String.class);
