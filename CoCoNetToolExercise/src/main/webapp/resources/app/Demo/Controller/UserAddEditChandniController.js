@@ -43,7 +43,6 @@ var DemoChandni;
             ];
             this.$scope.arrayHobbies = [];
         };
-        
         UserAddEditChandniController.prototype.convertDate = function (timestamp) {
             var d = new Date(timestamp);
             var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();

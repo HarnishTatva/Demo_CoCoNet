@@ -15,9 +15,9 @@ var Demo;
             }).success(function () { })
                 .error(function (data) { });
         };
+        FileUploadServiceChirag.$inject = ["$http"];
         return FileUploadServiceChirag;
     }());
-    FileUploadServiceChirag.$inject = ["$http"];
     Demo.FileUploadServiceChirag = FileUploadServiceChirag;
     angular.module("Demo").service("fileUploadServiceChirag", FileUploadServiceChirag);
 })(Demo || (Demo = {}));

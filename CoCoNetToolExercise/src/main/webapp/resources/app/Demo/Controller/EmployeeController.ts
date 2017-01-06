@@ -22,6 +22,9 @@ module Demo {
             $scope.employees = this.employees;
             $scope.vm = this;
             $scope.technologies = [];
+
+            $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+            $scope.data = [300, 500, 100];
             
             this.GetAllEmployee();
 
@@ -34,7 +37,6 @@ module Demo {
 
         // Init
         public Init() {
-            super.BaseInit();
         }
 
         GetAllEmployee() {
