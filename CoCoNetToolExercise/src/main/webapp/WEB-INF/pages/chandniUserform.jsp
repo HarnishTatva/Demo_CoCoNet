@@ -59,7 +59,7 @@
                                 <label for="txtFullname" class="col-lg-2 control-label required-cls">Full name</label>
                                 <div class="col-lg-10">
                                  	<input type="hidden" id="txtUserId" ng-model="userChandni.userId" data-ng-init="userChandni.userId ='${userChandni.userId}'">
-                                    <input type="text" class="form-control" id="txtFullname" name="txtFullname" placeholder="Full name" maxlength="100" data-ng-pattern="/^[a-zA-Z0-9 ]*$/" ng-model="userChandni.userFullName" data-ng-init="ctrl.getFullName('${userChandni.userFirstName}','${userChandni.userLastName}')" required>
+                                    <input type="text" class="form-control" id="txtFullname" name="txtFullname" placeholder="Full name" maxlength="100" data-ng-pattern="/^[a-zA-Z0-9 ]*$/" ng-model="userChandni.userFullName" data-ng-init="ctrl.getFullName('${userChandni.userFirstName}','${userChandni.userLastName}')" required autofocus>
                                     <div data-ng-show="userForm.txtFullname.$dirty && userForm.txtFullname.$error.required">
 										<span style="color:red;">Please enter Full name.</span>
 									</div>
