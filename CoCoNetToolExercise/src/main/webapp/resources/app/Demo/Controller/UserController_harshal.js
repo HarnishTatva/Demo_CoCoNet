@@ -18,7 +18,9 @@ var HarshalDemo;
             this.fileUploadService_harshal = fileUploadService_harshal;
             this.$modal = $modal;
             this.$filter = $filter;
+            this._url = localStorage._url;
             $scope.hobbies = [];
+            console.log(this._url);
         }
         UserController_harshal.prototype.selectHobby = function (hobby) {
             if (this.$scope.hobbies.indexOf(hobby) > -1) {
@@ -49,13 +51,13 @@ var HarshalDemo;
                 var file = this.$scope.profileimagefile;
                 if (file != null || file != undefined) {
                     var name = file.name;
-                    var uploadUrl = "/user_harshal/userImageUpload_harshal";
+                    var uploadUrl = this._url + "/user_harshal/userImageUpload_harshal";
                     this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
                     this.user.profileimage = name;
                 }
                 this.userService_harshal.saveUser_harshal(this.$scope, this.user).then(function (data) {
                     if (data.success == 'success') {
-                        _this.$window.location.href = "/user_harshal/usersList_harshal#/?status=save";
+                        _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal#/?status=save";
                     }
                 });
             }
@@ -88,13 +90,13 @@ var HarshalDemo;
                 var file = this.$scope.profileimagefile;
                 if (file != null || file != undefined) {
                     var name = file.name;
-                    var uploadUrl = "/user_harshal/userImageUpload_harshal";
+                    var uploadUrl = this._url + "/user_harshal/userImageUpload_harshal";
                     this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
                     this.user.profileimage = name;
                 }
                 this.userService_harshal.updateUser_harshal(this.$scope, this.user).then(function (data) {
                     if (data == 'success') {
-                        _this.$window.location.href = "/user_harshal/usersList_harshal#/?status=update";
+                        _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal#/?status=update";
                     }
                 });
             }
@@ -102,7 +104,7 @@ var HarshalDemo;
         UserController_harshal.prototype.userGraphData = function () {
             var _this = this;
             this.userService_harshal.getUserCountPerCity_harshal(this.$scope).then(function (data) {
-                console.log(data);
+                // pie chart configuration
                 _this.$scope.pieChartLabel_harshal = JSON.parse(data[0]);
                 _this.$scope.pieChartData_harshal = JSON.parse(data[1]);
                 _this.$scope.pieChartOption_harshal = {
@@ -111,6 +113,7 @@ var HarshalDemo;
                         text: 'User per City Pie Chart'
                     }
                 };
+                // bar chart configuration
                 _this.$scope.barChartLabel_harshal = JSON.parse(data[0]);
                 _this.$scope.barChartSeries_harshal = ['Users'];
                 _this.$scope.barChartData_harshal = JSON.parse(data[1]);

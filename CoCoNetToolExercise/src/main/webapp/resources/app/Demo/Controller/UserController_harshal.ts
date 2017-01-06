@@ -4,9 +4,11 @@ module HarshalDemo {
     export class UserController_harshal extends BaseController_harshal {
         'use strict';
 
-        users: UserMaster_harshal[];
-        user: UserMaster_harshal;
-        status : any;
+        private users: UserMaster_harshal[];
+        private user: UserMaster_harshal;
+        private status : any;
+        private _url : any;
+        
         public static $inject = [
             '$scope',
             '$location',
@@ -23,7 +25,10 @@ module HarshalDemo {
         					private fileUploadService_harshal: IFileUploadService_harshal, private $modal: ng.ui.bootstrap.IModalService,
         						private $filter: ng.IFilterService) {
             super($scope);
+            this._url = localStorage._url;
             $scope.hobbies = [];
+            
+            console.log(this._url);
         }
         
         selectHobby(hobby : string) {            
@@ -60,14 +65,14 @@ module HarshalDemo {
 	        	var file = this.$scope.profileimagefile;
 	            if (file != null || file != undefined) {
 	                var name = file.name;
-	                var uploadUrl = "/user_harshal/userImageUpload_harshal";
+	                var uploadUrl = this._url + "/user_harshal/userImageUpload_harshal";
 	                this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
 	                this.user.profileimage = name;
 	            }
 	            
 	        	this.userService_harshal.saveUser_harshal(this.$scope, this.user).then((data) => {
 	        		 if(data.success == 'success'){
-	 					this.$window.location.href="/user_harshal/usersList_harshal#/?status=save";
+	 					this.$window.location.href= this._url + "/user_harshal/usersList_harshal#/?status=save";
 	 		    	}
 	 		    });
         	}
@@ -105,14 +110,14 @@ module HarshalDemo {
 	        	var file = this.$scope.profileimagefile;
 	            if (file != null || file != undefined) {
 	                var name = file.name;
-	                var uploadUrl = "/user_harshal/userImageUpload_harshal";
+	                var uploadUrl = this._url + "/user_harshal/userImageUpload_harshal";
 	                this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
 	                this.user.profileimage = name;
 	            }
 	        	
 	            this.userService_harshal.updateUser_harshal(this.$scope, this.user).then((data) => {
 	        		 if(data == 'success'){
-	 					this.$window.location.href="/user_harshal/usersList_harshal#/?status=update";
+	 					this.$window.location.href= this._url + "/user_harshal/usersList_harshal#/?status=update";
 	 		    	}
 	 		    });
         	}

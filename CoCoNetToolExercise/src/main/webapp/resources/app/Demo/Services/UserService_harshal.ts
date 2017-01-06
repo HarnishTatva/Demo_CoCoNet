@@ -7,6 +7,7 @@ module HarshalDemo {
 
         private _http: ng.IHttpService;
         private $q: ng.IQService;
+        private _url : any; 
 
 
         static $inject = ["$http", "$q"];
@@ -14,43 +15,44 @@ module HarshalDemo {
         constructor(http: ng.IHttpService, $q: ng.IQService) {
             this._http = http;
             this.$q = $q;
+            this._url = localStorage._url;
         }
 
 
 
         public getUserList_harshal($scope: ICOCOScope_harshal): ng.IHttpPromise<UserMaster_harshal[]> {
-            return this._http.get('/user_harshal/usersListData_harshal')
+            return this._http.get(this._url + '/user_harshal/usersListData_harshal')
                 .then(this.success)
                 .catch(this.fail);
         }
         
         
         public saveUser_harshal($scope: ICOCOScope_harshal, user : UserMaster_harshal): ng.IHttpPromise<string> {
-        	return this._http.post('/user_harshal/userSave_harshal', user)
+        	return this._http.post(this._url + '/user_harshal/userSave_harshal', user)
         		.then(this.success)
         		.catch(this.fail);
 	    }
         
         public deleteUser_harshal($scope: ICOCOScope_harshal, userId : any): ng.IHttpPromise<string> {
-        	return this._http.post('/user_harshal/deleteUser_harshal', userId)
+        	return this._http.post(this._url + '/user_harshal/deleteUser_harshal', userId)
         		.then(this.success)
         		.catch(this.fail);
 	    }
         
         public getUserDetailById_harshal($scope: ICOCOScope_harshal, userId : any): ng.IHttpPromise<UserMaster_harshal> {
-        	return this._http.post('/user_harshal/getUserDetailById_harshal', userId)
+        	return this._http.post(this._url + '/user_harshal/getUserDetailById_harshal', userId)
     		.then(this.success)
     		.catch(this.fail);
         }
         
         public updateUser_harshal($scope: ICOCOScope_harshal, user : UserMaster_harshal): ng.IHttpPromise<string> {
-        	return this._http.post('/user_harshal/userUpdate_harshal', user)
+        	return this._http.post(this._url + '/user_harshal/userUpdate_harshal', user)
         		.then(this.success)
         		.catch(this.fail);
 	    }
         
         public getUserCountPerCity_harshal($scope: ICOCOScope_harshal): ng.IHttpPromise<string[]> {
-            return this._http.get('/user_harshal/getUserCountPerCity_harshal')
+            return this._http.get(this._url + '/user_harshal/getUserCountPerCity_harshal')
                 .then(this.success)
                 .catch(this.fail);
         }

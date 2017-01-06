@@ -25,8 +25,8 @@
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/UserController_harshal.js"></script>
     
     <style type="text/css">
-    	.ng-touched.ng-invalid.ng-invalid-required.ng-invalid-pattern{
-    		border: 1px solid yellow;
+    	.ng-touched.ng-invalid.ng-invalid-required{
+    		border: 1px solid red;
     	}
     </style>    
 </head>
