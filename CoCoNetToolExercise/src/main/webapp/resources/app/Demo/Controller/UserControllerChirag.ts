@@ -6,7 +6,7 @@ module Demo {
 
         userMasterList: Array<UserMasterChirag>;
         user : UserMasterChirag;
-        
+        status : any;
 
         public static $inject = [
             '$scope',
@@ -28,6 +28,13 @@ module Demo {
            $scope.hobbies = [];
            
            $scope.isImageRequired = true;
+           
+           this.status = this.$location.search().status;
+           if(!angular.isUndefined(this.status) && this.status != null && this.status != "") {
+               this.$scope.status = this.status.trim();
+           }
+           
+           
            this.userMasterList = this.$scope.userMasterList = new Array<UserMasterChirag>();
            this.userServiceChirag.GetUserList().then((data) => {
 		        this.userMasterList = data;
@@ -63,13 +70,15 @@ module Demo {
             	if(flag == 1){            			
             			this.userServiceChirag.SaveUser(this.$scope, this.user).then((data) => {
             				if(data.success == 'success'){
-            					this.$window.location.href="/userChirag/userList";
+            					this.$window.location.href="/userChirag/userList#/?status=save";
+            		    	}else if(data.conflict == 'conflict'){
+            		    		this.$window.location.href="/userChirag/userList#/?status=conflict";
             		    	}
                        	});
 	            } else if (flag == 0) {
 	            		this.userServiceChirag.UpdateUser(this.$scope, this.user).then((data) => {
-            				if(data.success == 'success'){
-            					this.$window.location.href="/userChirag/userList";
+            				if(data == 'success'){
+            					this.$window.location.href="/userChirag/userList#/?status=update";
             		    	}
                        	});
 	            }
@@ -90,7 +99,7 @@ module Demo {
            
     		
             var options: ng.ui.bootstrap.IModalSettings = {
-                    template:'<div class="modal-header"><h3 class="modal-title">Confirm</h3></div><div class="modal-body">Are you sure you want to delete this widget ?</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ctrl.save(' + id + ')">Ok</button><button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cancel</button></div>',
+                    template:'<div class="modal-header"><h3 class="modal-title">Confirm</h3></div><div class="modal-body">Are you sure you want to delete this User ?</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ctrl.save(' + id + ')">Ok</button><button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cancel</button></div>',
                     controller: 'userPopupControllerChirag as ctrl',
                     windowClass: 'app-modal-window',
                     resolve: {}

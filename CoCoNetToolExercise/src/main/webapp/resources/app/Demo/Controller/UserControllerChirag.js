@@ -21,6 +21,10 @@ var Demo;
             $scope.vm = _this;
             $scope.hobbies = [];
             $scope.isImageRequired = true;
+            _this.status = _this.$location.search().status;
+            if (!angular.isUndefined(_this.status) && _this.status != null && _this.status != "") {
+                _this.$scope.status = _this.status.trim();
+            }
             _this.userMasterList = _this.$scope.userMasterList = new Array();
             _this.userServiceChirag.GetUserList().then(function (data) {
                 _this.userMasterList = data;
@@ -50,14 +54,17 @@ var Demo;
             if (flag == 1) {
                 this.userServiceChirag.SaveUser(this.$scope, this.user).then(function (data) {
                     if (data.success == 'success') {
-                        _this.$window.location.href = "/userChirag/userList";
+                        _this.$window.location.href = "/userChirag/userList#/?status=save";
+                    }
+                    else if (data.conflict == 'conflict') {
+                        _this.$window.location.href = "/userChirag/userList#/?status=conflict";
                     }
                 });
             }
             else if (flag == 0) {
                 this.userServiceChirag.UpdateUser(this.$scope, this.user).then(function (data) {
-                    if (data.success == 'success') {
-                        _this.$window.location.href = "/userChirag/userList";
+                    if (data == 'success') {
+                        _this.$window.location.href = "/userChirag/userList#/?status=update";
                     }
                 });
             }
@@ -73,7 +80,7 @@ var Demo;
         UserControllerChirag.prototype.onDelete = function (id) {
             var _this = this;
             var options = {
-                template: '<div class="modal-header"><h3 class="modal-title">Confirm</h3></div><div class="modal-body">Are you sure you want to delete this widget ?</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ctrl.save(' + id + ')">Ok</button><button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cancel</button></div>',
+                template: '<div class="modal-header"><h3 class="modal-title">Confirm</h3></div><div class="modal-body">Are you sure you want to delete this User ?</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ctrl.save(' + id + ')">Ok</button><button class="btn btn-default" type="button" ng-click="ctrl.cancel()">Cancel</button></div>',
                 controller: 'userPopupControllerChirag as ctrl',
                 windowClass: 'app-modal-window',
                 resolve: {}
