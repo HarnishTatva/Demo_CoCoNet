@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
 import com.tatvacoconet.controller.HomeController;
 import com.tatvacoconet.entity.UserMasterChandni;
-
 /**
  * 
  * @author TatvaSoft
@@ -53,15 +52,15 @@ public class UserDAOImplChandni extends TatvaSoftDAOImpl<UserMasterChandni, Inte
 	}
 	
 	@Override
-	public boolean findUserByEmail(String email) {
+	public UserMasterChandni findUserByEmail(String email) {
 
 		List<UserMasterChandni> userList = findAll();
 		for(UserMasterChandni user : userList){
 			 while(user.getUserEmail().equals(email))
 			 {
-				 return true;
+				 return user;
 			 }
 		}
-		return false;
+		return null;
 	}
 }

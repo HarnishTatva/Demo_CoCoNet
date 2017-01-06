@@ -51,7 +51,7 @@
     <div class="container">
          <div class="col-lg-10">
                 <div class="well bs-component" ng-controller="userAddEditChandniController as ctrl" ng-init="ctrl.Init()">
-                    <form class="form-horizontal" ng-submit="ctrl.onSave(userForm.$invalid)" name="userForm" enctype="multipart/form-data"  novalidate="novalidate">
+                    <form class="form-horizontal" ng-submit="ctrl.onSave(userForm.$invalid)" name="userForm" enctype="multipart/form-data"  novalidate="novalidate" form-submit-validation="">
                         <fieldset>
                             <legend><span ng-show="userChandni.userId == 0" >Add </span> <span ng-show="userChandni.userId != 0" >Edit </span> User Details</legend>
 
@@ -59,7 +59,7 @@
                                 <label for="txtFullname" class="col-lg-2 control-label required-cls">Full name</label>
                                 <div class="col-lg-10">
                                  	<input type="hidden" id="txtUserId" ng-model="userChandni.userId" data-ng-init="userChandni.userId ='${userChandni.userId}'">
-                                    <input type="text" class="form-control" id="txtFullname" name="txtFullname" placeholder="Full name" maxlength="100" data-ng-pattern="/^[a-zA-Z0-9 ]*$/" ng-model="userChandni.userFullName" data-ng-init="ctrl.getFullName('${userChandni.userFirstName}','${userChandni.userLastName}')" required>
+                                    <input type="text" class="form-control" id="txtFullname" name="txtFullname" placeholder="Full name" maxlength="100" data-ng-pattern="/^[a-zA-Z0-9 ]*$/" ng-model="userChandni.userFullName" data-ng-init="ctrl.getFullName('${userChandni.userFirstName}','${userChandni.userLastName}')" required autofocus>
                                     <div data-ng-show="userForm.txtFullname.$dirty && userForm.txtFullname.$error.required">
 										<span style="color:red;">Please enter Full name.</span>
 									</div>
@@ -162,7 +162,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="button" class="btn btn-primary" ng-click="ctrl.onSave(userForm.$invalid)" ng-disabled="userForm.$invalid">Submit</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="ctrl.onSave(userForm.$invalid)">Submit</button>
                                     <a href="chandni-user-list" class="btn btn-default">Cancel</a>
                                 </div>
                             </div>

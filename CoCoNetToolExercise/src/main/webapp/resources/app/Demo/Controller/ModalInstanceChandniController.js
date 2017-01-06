@@ -16,6 +16,7 @@ var DemoChandni;
             _this.userChandniService = userChandniService;
             return _this;
         }
+        
         ModalInstanceChandniController.prototype.onConfirm = function (id) {
             var _this = this;
             this.userChandniService.deleteUser(this.$scope, id).then(function (data) {

@@ -30,6 +30,7 @@ module DemoChandni {
                 }.bind(this), 3000);
             }
 
+
             this.userChandniService.GetUserList(this.$scope).then((data) => {
                 $scope.userChandniList = data;
                 $scope.sortType = 'userFirstName'; // set the default sort type

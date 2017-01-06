@@ -16,7 +16,7 @@ module DemoChandni {
         public uploadFileToUrl(file: any, uploadUrl: any) {
             var fd = new FormData();
             fd.append('file', file);
-            debugger
+
             this._http.post(uploadUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }

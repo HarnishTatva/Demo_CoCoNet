@@ -9,7 +9,6 @@ var DemoChandni;
         FileUploadChandniService.prototype.uploadFileToUrl = function (file, uploadUrl) {
             var fd = new FormData();
             fd.append('file', file);
-            debugger;
             this._http.post(uploadUrl, fd, {
                 transformRequest: angular.identity,
                 headers: { 'Content-Type': undefined }

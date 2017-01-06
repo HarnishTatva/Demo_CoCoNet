@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tatvacoconet.dao.IUserDAOImplChandni;
 import com.tatvacoconet.entity.UserMasterChandni;
 
+
 /**
  * 
  * @author TatvaSoft
@@ -45,7 +46,7 @@ public class UserChandniService implements IUserChandniService
 	}
 	
 	@Override
-	public boolean findUserByEmail(String email) {
+	public UserMasterChandni findUserByEmail(String email) {
 		return userDAO.findUserByEmail(email);
 	}
 }
