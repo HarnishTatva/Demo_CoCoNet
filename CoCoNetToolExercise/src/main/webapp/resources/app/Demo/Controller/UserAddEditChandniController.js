@@ -4,7 +4,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-
 var DemoChandni;
 (function (DemoChandni) {
     var UserAddEditChandniController = (function (_super) {
@@ -52,6 +51,7 @@ var DemoChandni;
         };
         UserAddEditChandniController.prototype.onSave = function (formIsValid) {
             var _this = this;
+            this.$scope.showErrorsCheckValidity = true;
             if (!this.$scope.flag && this.$scope.userForm.$valid) {
                 this.data = this.$scope.userChandni;
                 if (this.$scope.userChandni.userId == "") {
@@ -60,8 +60,7 @@ var DemoChandni;
                 else {
                     this.data.userId = this.$scope.userChandni.userId;
                 }
-                var x = angular.element(document.getElementById("txtDob"));
-                this.data.userDob = x.val();
+                this.data.userDob = document.getElementById("txtDob").value;
                 if (this.$scope.userChandni.userFullName != "" && this.$scope.userChandni.userFullName != undefined) {
                     var fullname = this.$scope.userChandni.userFullName.split(' ');
                     this.data.userFirstName = fullname[0] == undefined ? "First" : fullname[0];

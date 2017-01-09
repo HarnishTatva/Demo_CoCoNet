@@ -49,7 +49,6 @@ module DemoChandni {
             this.$scope.arrayHobbies = [];
         }
 
-
         public convertDate(timestamp: any) {
             var d = new Date(timestamp);
             var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
@@ -57,6 +56,7 @@ module DemoChandni {
         }
 
         public onSave(formIsValid: any) {
+            this.$scope.showErrorsCheckValidity = true;
             if (!this.$scope.flag && this.$scope.userForm.$valid) {
                 this.data = this.$scope.userChandni;
 
@@ -67,8 +67,7 @@ module DemoChandni {
                     this.data.userId = this.$scope.userChandni.userId;
                 }
 
-                var x = angular.element(document.getElementById("txtDob"));
-                this.data.userDob = x.val();
+                this.data.userDob = document.getElementById("txtDob").value;
 
                 if (this.$scope.userChandni.userFullName != "" && this.$scope.userChandni.userFullName != undefined) {
                     var fullname = this.$scope.userChandni.userFullName.split(' ');
@@ -162,5 +161,4 @@ module DemoChandni {
         }
     }
     angular.module("DemoChandni").controller("userAddEditChandniController", UserAddEditChandniController);
-
 }
