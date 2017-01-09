@@ -14,6 +14,8 @@
     
     <script src="${pageContext.request.contextPath}/resources/app/angular.js"></script>
     <script src="${pageContext.request.contextPath}/resources/app/ui-bootstrap-tpls-0.13.4.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/app/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/app/angular-chart.js"></script>
     <script src="${pageContext.request.contextPath}/resources/app/angular-sanitize.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/app/Chart.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/app/angular-chart.js"></script>
