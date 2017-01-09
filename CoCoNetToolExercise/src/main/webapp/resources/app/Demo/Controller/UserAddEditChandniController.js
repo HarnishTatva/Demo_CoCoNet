@@ -4,20 +4,22 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+
 var DemoChandni;
 (function (DemoChandni) {
     var UserAddEditChandniController = (function (_super) {
         __extends(UserAddEditChandniController, _super);
         /// Conctructor
         function UserAddEditChandniController($scope, $location, $window, userChandniService, fileUploadChandniService) {
-            _super.call(this, $scope);
-            this.$scope = $scope;
-            this.$location = $location;
-            this.$window = $window;
-            this.userChandniService = userChandniService;
-            this.fileUploadChandniService = fileUploadChandniService;
-            this._location = $location;
-            this.$scope.flag = false;
+            var _this = _super.call(this, $scope) || this;
+            _this.$scope = $scope;
+            _this.$location = $location;
+            _this.$window = $window;
+            _this.userChandniService = userChandniService;
+            _this.fileUploadChandniService = fileUploadChandniService;
+            _this._location = $location;
+            _this.$scope.flag = false;
+            return _this;
         }
         // Init
         UserAddEditChandniController.prototype.Init = function () {
@@ -139,15 +141,15 @@ var DemoChandni;
                 this.$scope.userChandni.userGender = value;
             }
         };
-        UserAddEditChandniController.$inject = [
-            '$scope',
-            '$location',
-            '$window',
-            'userChandniService',
-            'fileUploadChandniService'
-        ];
         return UserAddEditChandniController;
     }(DemoChandni.BaseChandniController));
+    UserAddEditChandniController.$inject = [
+        '$scope',
+        '$location',
+        '$window',
+        'userChandniService',
+        'fileUploadChandniService'
+    ];
     DemoChandni.UserAddEditChandniController = UserAddEditChandniController;
     angular.module("DemoChandni").controller("userAddEditChandniController", UserAddEditChandniController);
 })(DemoChandni || (DemoChandni = {}));

@@ -49,6 +49,7 @@ module DemoChandni {
             this.$scope.arrayHobbies = [];
         }
 
+
         public convertDate(timestamp: any) {
             var d = new Date(timestamp);
             var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
@@ -161,4 +162,5 @@ module DemoChandni {
         }
     }
     angular.module("DemoChandni").controller("userAddEditChandniController", UserAddEditChandniController);
+
 }
