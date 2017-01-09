@@ -131,7 +131,7 @@
 								<td><a class="btn btn-primary btn-xs" href="#" ng-click="ctrl.onEdit(user.userId)">Edit</a>&nbsp;<a
 									class="btn btn-danger btn-xs" href="#" ng-click="ctrl.onDelete(user.userId)">Delete</a></td>
 						</tr>
-						<tr ng-show="!(userChandniList| filter:search).length">
+						<tr ng-show="(userChandniList| filter:search).length == 0">
         					<td colspan="9" style="text-align: center;font-weight: bold;">
             					No record to display               
         					</td>
