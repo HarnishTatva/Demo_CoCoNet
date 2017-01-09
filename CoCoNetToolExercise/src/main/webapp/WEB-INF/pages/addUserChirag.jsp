@@ -44,7 +44,7 @@ if(userid!=null && userid!=""){
 <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="UsersList.html" class="navbar-brand">Demo Application</a>
+                <a href="${pageContext.request.contextPath}/userChirag/dashboard" class="navbar-brand">User Dashboard</a>
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

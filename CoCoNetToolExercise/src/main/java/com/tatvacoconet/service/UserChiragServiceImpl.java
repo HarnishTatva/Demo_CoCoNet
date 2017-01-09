@@ -52,4 +52,10 @@ public class UserChiragServiceImpl implements IUserChiragService {
 		return userDAO.isUserExist(userMaster);
 	}
 	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getCharts() {
+		return userDAO.getCharts();
+	}
+	
 }

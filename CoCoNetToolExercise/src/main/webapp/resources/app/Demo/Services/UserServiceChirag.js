@@ -36,6 +36,10 @@ var Demo;
             return this._http.post('/userChirag/deleteUser', id)
                 .then(this.success)["catch"](this.fail);
         };
+        UserServiceChirag.prototype.getCharts = function ($scope) {
+            return this._http.get('/userChirag/getCharts')
+                .then(this.success)["catch"](this.fail);
+        };
         return UserServiceChirag;
     }());
     UserServiceChirag.$inject = ["$http", "$q"];

@@ -24,5 +24,7 @@ public void saveUser(UserMasterChirag user);
 	
 	public boolean isUserExist(UserMasterChirag userMaster);
 	
+	@SuppressWarnings("rawtypes")
+	public List getCharts();
 }
 

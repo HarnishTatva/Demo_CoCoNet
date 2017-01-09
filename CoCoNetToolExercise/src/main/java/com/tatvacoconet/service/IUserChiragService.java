@@ -23,6 +23,7 @@ public interface IUserChiragService {
 	
 	public boolean isUserExist(UserMasterChirag userMaster);
 
-	
+	@SuppressWarnings("rawtypes")
+	public List getCharts();	
 	
 }

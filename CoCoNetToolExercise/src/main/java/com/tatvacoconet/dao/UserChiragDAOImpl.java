@@ -1,8 +1,10 @@
 package com.tatvacoconet.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -59,6 +61,20 @@ public class UserChiragDAOImpl extends TatvaSoftDAOImpl<UserMasterChirag, Long> 
 			isFound = true;
 		
 		return isFound;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getCharts() {
+		List searchedList = new ArrayList<>();
+		
+		try{
+			
+			searchedList = getCountPerCol("city");
+		}catch(Exception e){
+			//logger.error("Error from getUserCountPerCity_harshal : " + e.getMessage());
+		}
+		return searchedList;
 	}
   
 }

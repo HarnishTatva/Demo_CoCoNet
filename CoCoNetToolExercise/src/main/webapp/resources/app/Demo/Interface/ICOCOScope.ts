@@ -9,5 +9,15 @@ module Demo {
     	hobbies : string[];	
     	isImageRequired: boolean;
     	status:any;
+    	
+    	// PIE & BAR Charts:
+    	barChartDataChirag : any;
+        barChartLabelChirag : any;
+        barChartSeriesChirag : any;
+        barChartOptionChirag : any;
+        
+        pieChartDataChirag : any;
+        pieChartLabelChirag : any;
+        pieChartOptionChirag : any;
     }
 }

@@ -62,6 +62,12 @@ module Demo {
         		.catch(this.fail);
 	    }
         
+        public getCharts($scope: ICOCOScope): ng.IHttpPromise<string[]> {
+            return this._http.get('/userChirag/getCharts')
+                .then(this.success)
+                .catch(this.fail);
+        }
+        
         private success: (response: any) => {} = (response) => response.data;
 
         private fail: (error: any) => {} = (error) => {

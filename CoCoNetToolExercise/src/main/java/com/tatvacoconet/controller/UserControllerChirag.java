@@ -3,6 +3,7 @@ package com.tatvacoconet.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -60,6 +61,19 @@ public class UserControllerChirag {
 		ModelAndView mav = new ModelAndView();
 		logger.info("userList called >>>>>>>>>>>");
 		mav.setViewName("userListChirag");
+		return mav;
+	}
+	
+	
+	/**
+	 * This API will redirect the useruration widget page.
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET) 
+	public ModelAndView dashboard() {
+		ModelAndView mav = new ModelAndView();
+		logger.info("Dashboard >>>>>>>>>>>");
+		mav.setViewName("dashboardChirag");
 		return mav;
 	}
 	
@@ -174,5 +188,43 @@ public class UserControllerChirag {
 			fos.close();
 		}
 		return "success";
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/getCharts", method = RequestMethod.GET)
+	public ResponseEntity<List<String>> getCharts() {
+		
+		List userCityCountList = userService.getCharts();
+		
+		StringBuilder cityData = new StringBuilder();
+		StringBuilder userCount = new StringBuilder();
+		
+		cityData.append("[");
+		userCount.append("[");
+		for (int i = 0; i < userCityCountList.size(); i++)
+		{
+			Object[] row = (Object[]) userCityCountList.get(i);
+
+			if (i == userCityCountList.size()-1)
+			{
+				cityData.append(" \"" + row[0] + "\" ");
+				userCount.append(" \"" + row[1] + "\" ");
+			}
+			else
+			{
+				cityData.append(" \"" + row[0] + "\", ");
+				userCount.append(" \"" + row[1] + "\", ");
+			}
+		}
+		cityData.append("]");
+		userCount.append("]");
+
+		List<String> responseList = new ArrayList<String>();
+		responseList.add(cityData.toString());
+		responseList.add(userCount.toString());
+		
+
+		logger.info("User count per city get successfully"); 
+		return new ResponseEntity<List<String>>(responseList, HttpStatus.OK);
 	}
 }	

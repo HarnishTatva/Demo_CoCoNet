@@ -130,6 +130,41 @@ module Demo {
 		        this.user.birthdate = this.$filter('date')(data.birthdate, 'yyyy-MM-dd');
 		      });
         }
+        
+        
+        userGraphData() {
+            this.userServiceChirag.getCharts(this.$scope).then((data) => {
+                // pie chart configuration
+                this.$scope.pieChartLabelChirag = JSON.parse(data[0]);
+                this.$scope.pieChartDataChirag = JSON.parse(data[1]);
+                this.$scope.pieChartOptionChirag = {
+                  title: {
+                        display: true,
+                        text: 'User count by Cities - Pie Chart'
+                    }
+                };
+                
+                // bar chart configuration
+                this.$scope.barChartLabelChirag = JSON.parse(data[0]);
+                this.$scope.barChartSeriesChirag = ['Users'];
+                this.$scope.barChartDataChirag= JSON.parse(data[1]);
+                this.$scope.barChartOptionChirag = {
+                  title: {
+                        display: true,
+                        text: 'User count by Cities - Bar Chart'
+                    },
+                    scales: {
+                    yAxes: [{
+                            ticks: {
+                                min: 0,
+                                stepSize: 1
+                            }
+                        }]
+                    }
+                };
+            
+            });
+        }
 
     }
 

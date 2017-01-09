@@ -101,6 +101,38 @@ var Demo;
                 _this.user.birthdate = _this.$filter('date')(data.birthdate, 'yyyy-MM-dd');
             });
         };
+        UserControllerChirag.prototype.userGraphData = function () {
+            var _this = this;
+            this.userServiceChirag.getCharts(this.$scope).then(function (data) {
+                // pie chart configuration
+                _this.$scope.pieChartLabelChirag = JSON.parse(data[0]);
+                _this.$scope.pieChartDataChirag = JSON.parse(data[1]);
+                _this.$scope.pieChartOptionChirag = {
+                    title: {
+                        display: true,
+                        text: 'User count by Cities - Pie Chart'
+                    }
+                };
+                // bar chart configuration
+                _this.$scope.barChartLabelChirag = JSON.parse(data[0]);
+                _this.$scope.barChartSeriesChirag = ['Users'];
+                _this.$scope.barChartDataChirag = JSON.parse(data[1]);
+                _this.$scope.barChartOptionChirag = {
+                    title: {
+                        display: true,
+                        text: 'User count by Cities - Bar Chart'
+                    },
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    stepSize: 1
+                                }
+                            }]
+                    }
+                };
+            });
+        };
         return UserControllerChirag;
     }(Demo.BaseController));
     UserControllerChirag.$inject = [
