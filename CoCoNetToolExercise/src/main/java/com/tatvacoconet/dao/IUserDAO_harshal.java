@@ -22,6 +22,6 @@ public interface IUserDAO_harshal {
 	public UserMaster_harshal findUserById_harshal(Integer userId);
 	
 	@SuppressWarnings("rawtypes")
-	public List getUserCountPerCity_harshal();
+	public List getUserCountPerCity_harshal(String columnName);
 }
 

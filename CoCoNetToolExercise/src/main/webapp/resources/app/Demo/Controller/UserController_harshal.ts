@@ -56,8 +56,8 @@ module HarshalDemo {
         }
 
         
-        userSave() {
-        	if(!angular.isUndefined(this.$scope.userForm_harshal)) {
+        userSaveUpdate(userId : any) {
+         	if(!angular.isUndefined(this.$scope.userForm_harshal)) {
 	        	this.user = this.$scope.user;
 	        	
 	        	this.user.hobby = this.$scope.hobbies.join(", "); 
@@ -69,12 +69,21 @@ module HarshalDemo {
 	                this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
 	                this.user.profileimage = name;
 	            }
-	            
-	        	this.userService_harshal.saveUser_harshal(this.$scope, this.user).then((data) => {
-	        		 if(data.success == 'success'){
-	 					this.$window.location.href= this._url + "/user_harshal/usersList_harshal#/?status=save";
-	 		    	}
-	 		    });
+	           
+                if(!angular.isUndefined(userId) && userId != null && userId != "" && userId > 0) {
+    	        	this.userService_harshal.updateUser_harshal(this.$scope, this.user).then((data) => {
+                         if(data == 'success'){
+                            this.$window.location.href= this._url + "/user_harshal/usersList_harshal#/?status=update";
+                        }
+                    });
+                } else {
+                   this.userService_harshal.saveUser_harshal(this.$scope, this.user).then((data) => {
+                         if(data.success == 'success'){
+                            this.$window.location.href= this._url + "/user_harshal/usersList_harshal#/?status=save";
+                        }
+                    });
+                }
+                
         	}
         }
         
@@ -82,7 +91,7 @@ module HarshalDemo {
         	this.$modal.open({
                 template: '<div class="modal-header"><h3 class="modal-title">Confirm</h3></div><div class="modal-body">Are you sure you want to delete this user ?</div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="modal.onConfirm(' + userId + ')">Ok</button><button class="btn btn-default" type="button" ng-click="modal.close()">Cancel</button></div>',
                 controller: 'modalInstanceController_harshal',
-                controllerAs : 'modal'
+                controllerAs : 'modal',
             });
         } 
         
@@ -100,28 +109,7 @@ module HarshalDemo {
         	}
         }
         
-        userUpdate() {
-        	if(!angular.isUndefined(this.$scope.userForm_harshal)) {
-	        	this.user = this.$scope.user;
-	        	
-	        	//this.user.hobby = "";
-	        	this.user.hobby = this.$scope.hobbies.join(", ");
-	        	
-	        	var file = this.$scope.profileimagefile;
-	            if (file != null || file != undefined) {
-	                var name = file.name;
-	                var uploadUrl = this._url + "/user_harshal/userImageUpload_harshal";
-	                this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
-	                this.user.profileimage = name;
-	            }
-	        	
-	            this.userService_harshal.updateUser_harshal(this.$scope, this.user).then((data) => {
-	        		 if(data == 'success'){
-	 					this.$window.location.href= this._url + "/user_harshal/usersList_harshal#/?status=update";
-	 		    	}
-	 		    });
-        	}
-        }
+        
         
         userGraphData() {
             this.userService_harshal.getUserCountPerCity_harshal(this.$scope).then((data) => {

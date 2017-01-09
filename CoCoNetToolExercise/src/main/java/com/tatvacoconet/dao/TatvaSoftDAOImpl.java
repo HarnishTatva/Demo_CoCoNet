@@ -1,6 +1,7 @@
 package com.tatvacoconet.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -9,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -160,4 +163,21 @@ public abstract class TatvaSoftDAOImpl<T,ID extends Serializable> implements ITa
 					Restrictions.eq(colName, colValue));
 			return (T) criteria.uniqueResult();
 	   }
+	 
+	@SuppressWarnings("rawtypes")
+	@Override
+	@Transactional
+	public List getCountPerCol(String columnName){
+		List searchedList = new ArrayList<>();
+		
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(entityType);
+        ProjectionList projList = Projections.projectionList();
+        projList.add(Projections.groupProperty(columnName));
+        projList.add(Projections.rowCount());
+        
+        crit.setProjection(projList);
+        searchedList = crit.list();
+
+        return searchedList;
+	}
 }

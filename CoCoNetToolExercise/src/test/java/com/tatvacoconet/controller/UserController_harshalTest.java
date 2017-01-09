@@ -95,4 +95,17 @@ public class UserController_harshalTest {
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 	}
 	
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void test7GetUserCountPerCity_harshal(){
+		ResponseEntity<String> responseEntity = this.restTemplate.getForEntity("/user_harshal/getUserCountPerCity_harshal", String.class);
+		String graphData = responseEntity.getBody();
+		
+		Gson gsonReceiver = new Gson();
+		List graphDataList = gsonReceiver.fromJson(graphData, List.class);
+		
+		assertThat(graphDataList.size()).isGreaterThanOrEqualTo(0);
+		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+	}
+	
 }

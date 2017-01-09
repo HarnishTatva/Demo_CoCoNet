@@ -163,7 +163,7 @@ public class UserController_harshal {
 	@RequestMapping(value = "/getUserCountPerCity_harshal", method = RequestMethod.GET)
 	public ResponseEntity<List<String>> getUserCountPerCity_harshal() {
 		
-		List userCityCountList = userService_harshal.getUserCountPerCity_harshal();
+		List userCityCountList = userService_harshal.getUserCountPerCity_harshal("city");
 		
 		StringBuilder cityData = new StringBuilder();
 		StringBuilder userCount = new StringBuilder();

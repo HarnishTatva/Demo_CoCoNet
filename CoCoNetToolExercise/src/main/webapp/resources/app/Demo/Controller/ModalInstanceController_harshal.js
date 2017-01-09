@@ -22,7 +22,8 @@ var HarshalDemo;
             this.userService_harshal.deleteUser_harshal(this.$scope, userId).then(function (data) {
                 _this.$modalInstance.dismiss('cancel');
                 if (data == "Deleted") {
-                    _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal";
+                    //this.$window.location.href= this._url + "/user_harshal/usersList_harshal";
+                    _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal/#/?status=delete";
                 }
             });
         };

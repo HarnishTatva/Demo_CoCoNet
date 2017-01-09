@@ -43,7 +43,7 @@ var HarshalDemo;
                 console.log(' users = ' + _this.$scope.users);
             });
         };
-        UserController_harshal.prototype.userSave = function () {
+        UserController_harshal.prototype.userSaveUpdate = function (userId) {
             var _this = this;
             if (!angular.isUndefined(this.$scope.userForm_harshal)) {
                 this.user = this.$scope.user;
@@ -55,11 +55,20 @@ var HarshalDemo;
                     this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
                     this.user.profileimage = name;
                 }
-                this.userService_harshal.saveUser_harshal(this.$scope, this.user).then(function (data) {
-                    if (data.success == 'success') {
-                        _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal#/?status=save";
-                    }
-                });
+                if (!angular.isUndefined(userId) && userId != null && userId != "" && userId > 0) {
+                    this.userService_harshal.updateUser_harshal(this.$scope, this.user).then(function (data) {
+                        if (data == 'success') {
+                            _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal#/?status=update";
+                        }
+                    });
+                }
+                else {
+                    this.userService_harshal.saveUser_harshal(this.$scope, this.user).then(function (data) {
+                        if (data.success == 'success') {
+                            _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal#/?status=save";
+                        }
+                    });
+                }
             }
         };
         UserController_harshal.prototype.userDelete = function (userId) {
@@ -78,26 +87,6 @@ var HarshalDemo;
                     _this.user.dateofbirth = _this.$filter('date')(data.dateofbirth, 'yyyy-MM-dd');
                     _this.$scope.user = _this.user;
                     console.log(' users = ' + _this.$scope.user);
-                });
-            }
-        };
-        UserController_harshal.prototype.userUpdate = function () {
-            var _this = this;
-            if (!angular.isUndefined(this.$scope.userForm_harshal)) {
-                this.user = this.$scope.user;
-                //this.user.hobby = "";
-                this.user.hobby = this.$scope.hobbies.join(", ");
-                var file = this.$scope.profileimagefile;
-                if (file != null || file != undefined) {
-                    var name = file.name;
-                    var uploadUrl = this._url + "/user_harshal/userImageUpload_harshal";
-                    this.fileUploadService_harshal.uploadFileToUrl(file, uploadUrl);
-                    this.user.profileimage = name;
-                }
-                this.userService_harshal.updateUser_harshal(this.$scope, this.user).then(function (data) {
-                    if (data == 'success') {
-                        _this.$window.location.href = _this._url + "/user_harshal/usersList_harshal#/?status=update";
-                    }
                 });
             }
         };

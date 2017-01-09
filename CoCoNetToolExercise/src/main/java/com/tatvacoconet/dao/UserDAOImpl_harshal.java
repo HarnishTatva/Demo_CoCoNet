@@ -1,10 +1,8 @@
 package com.tatvacoconet.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,19 +59,10 @@ public class UserDAOImpl_harshal extends TatvaSoftDAOImpl<UserMaster_harshal, In
 	}
 
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes" })
 	@Override
-	public List getUserCountPerCity_harshal() {
-		List searchedList = new ArrayList<>();
-		
-		try{
-			Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT user_city, count(*) from user_harshal GROUP BY user_city");
-			searchedList = query.list();
-	
-		}catch(Exception e){
-			logger.error("Error from getUserCountPerCity_harshal : " + e.getMessage());
-		}
-		return searchedList;
+	public List getUserCountPerCity_harshal(String columnName) {
+		return getCountPerCol(columnName);
 	}
 	  
 }

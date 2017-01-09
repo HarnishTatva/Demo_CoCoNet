@@ -19,5 +19,8 @@ public interface ITatvaSoftDAO<T,ID> {
     
     public void delete(ID key);
     
-    T findbyName(String col,String name);
+    public T findbyName(String col,String name);
+    
+    @SuppressWarnings("rawtypes")
+	public List getCountPerCol(String columnName);
 }

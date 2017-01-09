@@ -49,8 +49,8 @@ public class UserServiceImpl_harshal implements IUserService_harshal {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public List getUserCountPerCity_harshal() {
-		return userDAO_harshal.getUserCountPerCity_harshal();
+	public List getUserCountPerCity_harshal(String columnName) {
+		return userDAO_harshal.getUserCountPerCity_harshal(columnName);
 	}
 
 }

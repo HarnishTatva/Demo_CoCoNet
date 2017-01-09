@@ -16,7 +16,8 @@ module HarshalDemo {
             this.userService_harshal.deleteUser_harshal(this.$scope, userId).then((data) => {
                 this.$modalInstance.dismiss('cancel');
                 if(data == "Deleted") {
-                   this.$window.location.href= this._url + "/user_harshal/usersList_harshal";
+                   //this.$window.location.href= this._url + "/user_harshal/usersList_harshal";
+                   this.$window.location.href= this._url + "/user_harshal/usersList_harshal/#/?status=delete";
                    //this.$scope.status="delete";
                 }
             });
