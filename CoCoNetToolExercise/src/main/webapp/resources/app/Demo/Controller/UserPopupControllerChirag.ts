@@ -14,7 +14,7 @@ module Demo {
         }
 
         save(id:number) {
-        	this._http.post("http://localhost:8898/userChirag/deleteUser",id);
+        	this._http.post("/userChirag/deleteUser",id);
             //this.$modalInstance.close(this.item);
             this.$window.location.href="/userChirag/userList/#/?status=delete";
         }
