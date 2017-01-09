@@ -1,5 +1,4 @@
 /// <reference path='../../_allChandni.ts' />
-
 module DemoChandni {
     export interface ICOCOChandniScope extends ng.IScope {
         //====================================
