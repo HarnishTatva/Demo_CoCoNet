@@ -9,16 +9,16 @@ var Demo;
             this.$q = $q;
         }
         UserPopupControllerChirag.prototype.save = function (id) {
-            this._http.post("http://localhost:8898/userChirag/deleteUser", id);
+            this._http.post("/userChirag/deleteUser", id);
             //this.$modalInstance.close(this.item);
             this.$window.location.href = "/userChirag/userList/#/?status=delete";
         };
         UserPopupControllerChirag.prototype.cancel = function () {
             this.$modalInstance.dismiss('cancel');
         };
-        UserPopupControllerChirag.$inject = ['$modalInstance', "$http", "$q", '$window'];
         return UserPopupControllerChirag;
     }());
+    UserPopupControllerChirag.$inject = ['$modalInstance', "$http", "$q", '$window'];
     Demo.UserPopupControllerChirag = UserPopupControllerChirag;
     angular.module("Demo").controller("userPopupControllerChirag", UserPopupControllerChirag);
 })(Demo || (Demo = {}));
