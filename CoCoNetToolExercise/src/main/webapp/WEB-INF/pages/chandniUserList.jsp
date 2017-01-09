@@ -126,10 +126,16 @@
 								<td>{{user.userHobbies}}</td>
 								<td>{{user.userCity}}</td>
 								<td>{{user.userAddress}}</td>
-								<td><img ng-show='user.userImage != null' ng-src="${pageContext.request.contextPath}/resources/images_chandni/{{user.userImage}}" class="img-thumbnail" style="width: 50px;height: 50px;" /></td>
+								<td><img ng-show='user.userImage == ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/default.png" class="img-thumbnail" style="width: 50px;height: 50px;" />
+								<img ng-show='user.userImage != ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/{{user.userImage}}" class="img-thumbnail" style="width: 50px;height: 50px;" /></td>
 								<td><a class="btn btn-primary btn-xs" href="#" ng-click="ctrl.onEdit(user.userId)">Edit</a>&nbsp;<a
 									class="btn btn-danger btn-xs" href="#" ng-click="ctrl.onDelete(user.userId)">Delete</a></td>
 						</tr>
+						<tr ng-show="!(userChandniList| filter:search).length">
+        					<td colspan="9" style="text-align: center;font-weight: bold;">
+            					No record to display               
+        					</td>
+    					</tr>
                     </tbody>
                 </table>
                 
