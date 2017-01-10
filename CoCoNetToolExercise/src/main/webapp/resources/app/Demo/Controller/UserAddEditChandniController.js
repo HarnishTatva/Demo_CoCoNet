@@ -73,6 +73,7 @@ var DemoChandni;
                 var file = this.$scope.profileimagefile;
                 if (file != null || file != undefined) {
                     var uploadUrl = "/chandni/userImageUpload";
+                    this.fileUploadChandniService.uploadFileToUrl(file, uploadUrl);
                     this.data.userImage = file.name;
                 }
                 this.userChandniService.addUpdateUser(this.$scope, this.data).then(function (response) {

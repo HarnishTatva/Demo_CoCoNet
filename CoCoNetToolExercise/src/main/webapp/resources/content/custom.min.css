@@ -53,3 +53,16 @@ span.error
     color: red;
     font-size: medium;
 }
+
+td.adjust-large-td
+{
+	max-width: 200px;
+    min-width: 100px;
+    width: 200px;
+    word-break: break-all;
+}
+
+.adjust-tdx1{
+	max-width: 200px;
+    min-width: 100px;
+}

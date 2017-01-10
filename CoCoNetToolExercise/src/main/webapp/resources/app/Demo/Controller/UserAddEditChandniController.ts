@@ -83,6 +83,7 @@ module DemoChandni {
                 var file = this.$scope.profileimagefile;
                 if (file != null || file != undefined) {
                     var uploadUrl = "/chandni/userImageUpload";
+                    this.fileUploadChandniService.uploadFileToUrl(file, uploadUrl);
                     this.data.userImage = file.name;
                 }
 

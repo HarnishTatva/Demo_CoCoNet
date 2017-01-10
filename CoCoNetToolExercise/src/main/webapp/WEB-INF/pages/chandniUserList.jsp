@@ -66,35 +66,35 @@
                 <table class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
-                            <th>
+                            <th class="adjust-tdx1">
                               <a href="#" ng-click="sortType = 'userFirstName'; sortReverse = !sortReverse" class="no-text-decoration">
         						Full name
         						<span ng-show="sortType == 'userFirstName' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'userFirstName' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th class="adjust-tdx1">
                               <a href="#" ng-click="sortType = 'userEmail'; sortReverse = !sortReverse" class="no-text-decoration">
         						Email
         						<span ng-show="sortType == 'userEmail' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'userEmail' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th class="adjust-tdx1">
                               <a href="#" ng-click="sortType = 'userDob'; sortReverse = !sortReverse" class="no-text-decoration">
         						Date Of Birth
         						<span ng-show="sortType == 'userDob' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'userDob' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th class="adjust-tdx1">
                               <a href="#" ng-click="sortType = 'userPhoneNumber'; sortReverse = !sortReverse" class="no-text-decoration">
         						Phone number
         						<span ng-show="sortType == 'userPhoneNumber' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'userPhoneNumber' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th class="adjust-tdx1">
 	                            <a href="#" ng-click="sortType = 'userHobbies'; sortReverse = !sortReverse" class="no-text-decoration">
 	        						Hobbies
 	        						<span ng-show="sortType == 'userHobbies' && !sortReverse">&#x2193;</span>
@@ -108,15 +108,15 @@
 							        <span ng-show="sortType == 'userCity' && sortReverse">&#x2191;</span>
 							    </a>
                             </th>
-                            <th>
+                            <th class="adjust-tdx1">
                                <a href="#" ng-click="sortType = 'userAddress'; sortReverse = !sortReverse" class="no-text-decoration">
 	        						Address
 	        						<span ng-show="sortType == 'userAddress' && !sortReverse">&#x2193;</span>
 							        <span ng-show="sortType == 'userAddress' && sortReverse">&#x2191;</span>
 							    </a>
 							</th>
-                            <th>User Image</th>
-                            <th>Action</th>
+                            <th class="adjust-tdx1">User Image</th>
+                            <th class="adjust-tdx1">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,7 +127,7 @@
 								<td>{{user.userPhoneNumber}}</td>
 								<td>{{user.userHobbies}}</td>
 								<td>{{user.userCity}}</td>
-								<td>{{user.userAddress}}</td>
+								<td class="adjust-large-td">{{user.userAddress}}</td>
 								<td><img ng-show='user.userImage == ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/default.png" class="img-thumbnail" style="width: 50px;height: 50px;" />
 								<img onerror="this.src='${pageContext.request.contextPath}/resources/images_chandni/default.png'" ng-show='user.userImage != ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/{{user.userImage}}" class="img-thumbnail" style="width: 50px;height: 50px;" /></td>
 								<td><a class="btn btn-primary btn-xs" href="#" ng-click="ctrl.onEdit(user.userId)">Edit</a>&nbsp;<a

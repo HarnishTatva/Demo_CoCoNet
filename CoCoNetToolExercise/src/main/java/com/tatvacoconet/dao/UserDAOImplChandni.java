@@ -1,6 +1,7 @@
 package com.tatvacoconet.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Consumer;
@@ -32,7 +33,10 @@ public class UserDAOImplChandni extends TatvaSoftDAOImpl<UserMasterChandni, Inte
 	
 	@Override
 	public List<UserMasterChandni> getUserList() {
-		return findAll(); 
+		//return findAll().sort(c);;
+		 List<UserMasterChandni> users = findAll();
+		 Collections.reverse(users);
+	     return users;
 	}
 	
 	@Override
