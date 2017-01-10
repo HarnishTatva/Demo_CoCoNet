@@ -79,64 +79,64 @@
             	<table class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
-                            <th>
+                            <th style="min-width:110px">
                               <a href="#" ng-click="sortType = 'fname'; sortReverse = !sortReverse" class="no-text-decoration">
         						Full name
         						<span ng-show="sortType == 'fname' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'fname' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                             <th>
+                             <th style="min-width:110px">
                               <a href="#" ng-click="sortType = 'gender'; sortReverse = !sortReverse" class="no-text-decoration">
         						Gender
         						<span ng-show="sortType == 'gender' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'gender' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th style="min-width:110px">
                               <a href="#" ng-click="sortType = 'emailid'; sortReverse = !sortReverse" class="no-text-decoration">
         						Email
         						<span ng-show="sortType == 'emailid' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'emailid' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th style="min-width:110px">
                               <a href="#" ng-click="sortType = 'birthdate'; sortReverse = !sortReverse" class="no-text-decoration">
         						Date Of Birth
         						<span ng-show="sortType == 'birthdate' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'birthdate' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th style="min-width:120px">
                               <a href="#" ng-click="sortType = 'phone'; sortReverse = !sortReverse" class="no-text-decoration">
         						Phone number
         						<span ng-show="sortType == 'phone' && !sortReverse">&#x2193;</span>
 						        <span ng-show="sortType == 'phone' && sortReverse">&#x2191;</span>
 						      </a>
                             </th>
-                            <th>
+                            <th style="min-width:110px">
 	                            <a href="#" ng-click="sortType = 'hobbies'; sortReverse = !sortReverse" class="no-text-decoration">
 	        						Hobbies
 	        						<span ng-show="sortType == 'hobbies' && !sortReverse">&#x2193;</span>
 							        <span ng-show="sortType == 'hobbies' && sortReverse">&#x2191;</span>
 							    </a>
                             </th>
-                            <th>
+                            <th style="min-width:110px">
                                <a href="#" ng-click="sortType = 'city'; sortReverse = !sortReverse" class="no-text-decoration">
 	        						City
 	        						<span ng-show="sortType == 'city' && !sortReverse">&#x2193;</span>
 							        <span ng-show="sortType == 'city' && sortReverse">&#x2191;</span>
 							    </a>
                             </th>
-                            <th>
+                            <th style="min-width:110px">
                                <a href="#" ng-click="sortType = 'address'; sortReverse = !sortReverse" class="no-text-decoration">
 	        						Address
 	        						<span ng-show="sortType == 'address' && !sortReverse">&#x2193;</span>
 							        <span ng-show="sortType == 'address' && sortReverse">&#x2191;</span>
 							    </a>
 							</th>
-                            <th>User Image</th>
-                            <th>Action</th>
+                            <th style="min-width:110px">User Image</th>
+                            <th style="min-width:110px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
