@@ -108,7 +108,7 @@
 							        <span ng-show="sortType == 'userCity' && sortReverse">&#x2191;</span>
 							    </a>
                             </th>
-                            <th class="adjust-tdx1">
+                            <th>
                                <a href="#" ng-click="sortType = 'userAddress'; sortReverse = !sortReverse" class="no-text-decoration">
 	        						Address
 	        						<span ng-show="sortType == 'userAddress' && !sortReverse">&#x2193;</span>

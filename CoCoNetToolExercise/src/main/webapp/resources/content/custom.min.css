@@ -56,13 +56,13 @@ span.error
 
 td.adjust-large-td
 {
-	max-width: 200px;
-    min-width: 100px;
+	max-width: 300px;
+    min-width: 200px;
     width: 200px;
     word-break: break-all;
 }
 
 .adjust-tdx1{
 	max-width: 200px;
-    min-width: 100px;
+    min-width: 125px;
 }
