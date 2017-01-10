@@ -10,6 +10,7 @@ module Demo {
     	isImageRequired: boolean;
     	status:any;
     	
+    	
     	// PIE & BAR Charts:
     	barChartDataChirag : any;
         barChartLabelChirag : any;
@@ -19,5 +20,15 @@ module Demo {
         pieChartDataChirag : any;
         pieChartLabelChirag : any;
         pieChartOptionChirag : any;
+    	
+    	 //====================================
+        sortType: string; // set the default sort type
+        sortReverse: boolean;  // set the default sort order
+        
+        viewby: number;
+        totalItems: number;
+        currentPage: number;
+        itemsPerPage: number;
+        maxSize: number; //Number of pager buttons to show
     }
 }

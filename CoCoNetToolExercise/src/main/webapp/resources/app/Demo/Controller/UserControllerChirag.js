@@ -29,6 +29,14 @@ var Demo;
             _this.userServiceChirag.GetUserList().then(function (data) {
                 _this.userMasterList = data;
                 $scope.vm = data;
+                //----------------------------------
+                $scope.sortType = 'fname'; // set the default sort type
+                $scope.sortReverse = false; // set the default sort order
+                $scope.viewby = 5;
+                $scope.totalItems = data.length;
+                $scope.currentPage = 1;
+                $scope.itemsPerPage = $scope.viewby;
+                $scope.maxSize = 5;
             });
             return _this;
         }
@@ -38,6 +46,14 @@ var Demo;
             }
             else {
                 this.$scope.hobbies.push(hobbies);
+            }
+        };
+        UserControllerChirag.prototype.getGender = function (gender) {
+            if (gender === 1) {
+                return 'Male';
+            }
+            else {
+                return 'Female';
             }
         };
         UserControllerChirag.prototype.onSave = function (flag) {

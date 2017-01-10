@@ -39,6 +39,16 @@ module Demo {
            this.userServiceChirag.GetUserList().then((data) => {
 		        this.userMasterList = data;
 		        $scope.vm = data;
+		        
+		        
+		        //----------------------------------
+		        $scope.sortType = 'fname'; // set the default sort type
+                $scope.sortReverse = false;  // set the default sort order
+                $scope.viewby = 5;
+                $scope.totalItems = data.length;
+                $scope.currentPage = 1;
+                $scope.itemsPerPage = $scope.viewby;
+                $scope.maxSize = 5; 
 		      });
           
         }
@@ -53,6 +63,14 @@ module Demo {
             }
             else {
                 this.$scope.hobbies.push(hobbies);
+            }
+        }
+        getGender(gender : any) {            
+            if (gender === 1) {
+            	return 'Male';
+            }
+            else {
+            	return 'Female';
             }
         }
         

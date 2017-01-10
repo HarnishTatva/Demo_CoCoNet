@@ -13,6 +13,6 @@ module Demo {
     	
     	DeleteUser:($scope: ICOCOScope, id : number)=> ng.IPromise<string>;
     	
-        
+    	getCharts:($scope: ICOCOScope)=> ng.IPromise<string[]>
     }
 }

@@ -64,44 +64,106 @@
 				<div class="alert alert-danger" ng-show="status != undefined && status != '' && status !='success' && status !='delete' && status !='save' && status !='update' && status != null">
 					<strong>ERROR! </strong><span ng-show="status == 'conflict'">User is already exist.</span>
 				</div>
-                <a href="${pageContext.request.contextPath}/userChirag/addUser" class="btn btn-primary"
-						style="float: right; margin: 10px;">Add</a>
+                <a href="${pageContext.request.contextPath}/userChirag/addUser" class="btn btn-info"
+						style="float: right; margin: 10px;">Add User</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <input type="text" ng-model="search" class="form-control" placeholder="Search">
             </div>
         </div>
         <br/>
         <div class="row">
             <div class="col-lg-12">
-                <table class="table table-striped table-hover table-responsive">
+            	<table class="table table-striped table-hover table-responsive">
                     <thead>
                         <tr>
-                            <th>Full Name</th>
-                            <th>Gender </th>
-                            <th>Email</th>
-                            <th>Date of birth</th>
-                            <th>Phone</th>
-                            <th>Hobbies </th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>Image</th>
+                            <th>
+                              <a href="#" ng-click="sortType = 'fname'; sortReverse = !sortReverse" class="no-text-decoration">
+        						Full name
+        						<span ng-show="sortType == 'fname' && !sortReverse">&#x2193;</span>
+						        <span ng-show="sortType == 'fname' && sortReverse">&#x2191;</span>
+						      </a>
+                            </th>
+                             <th>
+                              <a href="#" ng-click="sortType = 'gender'; sortReverse = !sortReverse" class="no-text-decoration">
+        						Gender
+        						<span ng-show="sortType == 'gender' && !sortReverse">&#x2193;</span>
+						        <span ng-show="sortType == 'gender' && sortReverse">&#x2191;</span>
+						      </a>
+                            </th>
+                            <th>
+                              <a href="#" ng-click="sortType = 'emailid'; sortReverse = !sortReverse" class="no-text-decoration">
+        						Email
+        						<span ng-show="sortType == 'emailid' && !sortReverse">&#x2193;</span>
+						        <span ng-show="sortType == 'emailid' && sortReverse">&#x2191;</span>
+						      </a>
+                            </th>
+                            <th>
+                              <a href="#" ng-click="sortType = 'birthdate'; sortReverse = !sortReverse" class="no-text-decoration">
+        						Date Of Birth
+        						<span ng-show="sortType == 'birthdate' && !sortReverse">&#x2193;</span>
+						        <span ng-show="sortType == 'birthdate' && sortReverse">&#x2191;</span>
+						      </a>
+                            </th>
+                            <th>
+                              <a href="#" ng-click="sortType = 'phone'; sortReverse = !sortReverse" class="no-text-decoration">
+        						Phone number
+        						<span ng-show="sortType == 'phone' && !sortReverse">&#x2193;</span>
+						        <span ng-show="sortType == 'phone' && sortReverse">&#x2191;</span>
+						      </a>
+                            </th>
+                            <th>
+	                            <a href="#" ng-click="sortType = 'hobbies'; sortReverse = !sortReverse" class="no-text-decoration">
+	        						Hobbies
+	        						<span ng-show="sortType == 'hobbies' && !sortReverse">&#x2193;</span>
+							        <span ng-show="sortType == 'hobbies' && sortReverse">&#x2191;</span>
+							    </a>
+                            </th>
+                            <th>
+                               <a href="#" ng-click="sortType = 'city'; sortReverse = !sortReverse" class="no-text-decoration">
+	        						City
+	        						<span ng-show="sortType == 'city' && !sortReverse">&#x2193;</span>
+							        <span ng-show="sortType == 'city' && sortReverse">&#x2191;</span>
+							    </a>
+                            </th>
+                            <th>
+                               <a href="#" ng-click="sortType = 'address'; sortReverse = !sortReverse" class="no-text-decoration">
+	        						Address
+	        						<span ng-show="sortType == 'address' && !sortReverse">&#x2193;</span>
+							        <span ng-show="sortType == 'address' && sortReverse">&#x2191;</span>
+							    </a>
+							</th>
+                            <th>User Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="userMasterList in ctrl.userMasterList">
-								<td>{{userMasterList.fname}}</td>								
-								<td>{{userMasterList.gender}}</td>
-								<td>{{userMasterList.emailid}}</td>
-								<td>{{userMasterList.birthdate | date:'dd-MM-yyyy'}}</td>
-								<td>{{userMasterList.phone}}</td>
-								<td>{{userMasterList.hobbies}}</td>
-								<td>{{userMasterList.city}}</td>
-								<td>{{userMasterList.address}}</td>
-								<td><img ng-if="userMasterList.imageFilePath!=null" src="/resources/images/{{userMasterList.imageFilePath}}" alt="" class="img-thumbnail" style="width: 50px;height: 50px;" /></td>
-								<td><a href="#" ng-click="ctrl.onEdit(userMasterList.userid)">Edit</a>&nbsp;|&nbsp;<a
-									href="#" ng-click="ctrl.onDelete(userMasterList.userid)">Delete</a></td>
-                        </tr>                        
+                       <tr ng-repeat="user in ctrl.userMasterList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:sortType:sortReverse | filter: search">
+								<td>{{user.fname}}</td>
+								<td>{{ctrl.getGender(user.gender)}}</td>
+								<td>{{user.emailid}}</td>
+								<td>{{user.birthdate | date:'dd-MM-yyyy'}}</td>
+								<td>{{user.phone}}</td>
+								<td>{{user.hobbies}}</td>
+								<td>{{user.city}}</td>
+								<td>{{user.address}}</td>
+								<td><img ng-show='user.imageFilePath == ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/default.png" class="img-thumbnail" style="width: 50px;height: 50px;" />
+								<img ng-show='user.imageFilePath!=null' ng-src="${pageContext.request.contextPath}/resources/images/{{user.imageFilePath}}" class="img-thumbnail" style="width: 50px;height: 50px;" /></td>
+								<td><a class="btn btn-primary btn-xs" href="#" ng-click="ctrl.onEdit(user.userid)">Edit</a>&nbsp;<a
+									class="btn btn-danger btn-xs" href="#" ng-click="ctrl.onDelete(user.userid)">Delete</a></td>
+						</tr>
+						<tr ng-show="(ctrl.userMasterList| filter:search).length == 0">
+        					<td colspan="9" style="text-align: center;font-weight: bold;">
+            					No record to display               
+        					</td>
+    					</tr>
                     </tbody>
                 </table>
+                <div class="text-center">
+            		 <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+          		</div>	
             </div>
         </div>
     </div>
