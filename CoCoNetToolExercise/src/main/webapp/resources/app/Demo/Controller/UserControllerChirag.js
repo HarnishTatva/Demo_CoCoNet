@@ -149,6 +149,19 @@ var Demo;
                 };
             });
         };
+        UserControllerChirag.prototype.validateFile = function (files) {
+            if (!files) {
+                return true;
+            }
+            var ext = files.name.match(/\.(.+)$/)[1];
+            if (angular.lowercase(ext) === 'jpg' || angular.lowercase(ext) === 'jpeg' || angular.lowercase(ext) === 'png') {
+                return true;
+            }
+            else {
+                alert("Only .jpg, .png, .jpeg allow with max 5 MB");
+                return false;
+            }
+        };
         return UserControllerChirag;
     }(Demo.BaseController));
     UserControllerChirag.$inject = [

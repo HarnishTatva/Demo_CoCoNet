@@ -66,7 +66,7 @@ if(userid!=null && userid!=""){
         <div class="row">
             <div class="col-lg-10">
                 <div class="well bs-component">
-                    <form class="form-horizontal" ng-submit="userForm.$valid && ctrl.onSave(<%=flag%>)" name="userForm">
+                    <form class="form-horizontal" ng-submit="ctrl.validateFile(this.myFile) && userForm.$valid && ctrl.onSave(<%=flag%>)" name="userForm">
                         <fieldset>
                             <legend>Add or Edit User Details</legend>
 
@@ -190,7 +190,7 @@ if(userid!=null && userid!=""){
 	                            <div class="form-group">
 	                                <label for="fileImage" class="col-lg-2 control-label"><span style="color:red;">*</span>Image :</label>
 	                                <div class="col-lg-10">
-	                                	<input type="file" name="file" id="fileUserImage" class="form-control" file-upload="myFile" accept="image/*"  ng-required="isImageRequired">
+	                                	<input type="file" name="file" id="fileUserImage" class="form-control" file-upload="myFile" ng-accept="image/*"  ng-required="isImageRequired">
 	                                </div>
 	                            </div>
 	
