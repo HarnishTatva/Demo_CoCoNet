@@ -15,6 +15,8 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script> 
 	<script src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
 	<script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/app/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/app/angular-chart.js"></script>
 	
 	<script src="${pageContext.request.contextPath}/resources/app/Demo/DemoAppChandni.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/app/Demo/Services/FileUploadChandniService.js"></script>
@@ -42,7 +44,7 @@
                         <a href="chandni-user-list">Manage Users</a>
                     </li>
                     <li>
-                        <a href="#">Manage Employees</a>
+                        <a href="chandni-charts">Statistics</a>
                     </li>
                 </ul>
             </div>

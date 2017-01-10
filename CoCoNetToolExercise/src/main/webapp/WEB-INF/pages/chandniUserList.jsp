@@ -11,6 +11,8 @@
     <script src="${pageContext.request.contextPath}/resources/app/ui-bootstrap-tpls-0.13.4.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/app/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/app/bootstrap.min.js"></script>   
+	<script src="${pageContext.request.contextPath}/resources/app/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/app/angular-chart.js"></script>
 	
 	<script src="${pageContext.request.contextPath}/resources/app/Demo/DemoAppChandni.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/app/Demo/Services/UserChandniService.js"></script>
@@ -35,8 +37,8 @@
                     <li>
                         <a href="chandni-user-list">Manage Users</a>
                     </li>
-                    <li>
-                        <a href="#">Manage Employees</a>
+                     <li>
+                        <a href="chandni-charts">Statistics</a>
                     </li>
                 </ul>
             </div>

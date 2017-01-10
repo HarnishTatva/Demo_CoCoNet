@@ -3,6 +3,7 @@ package com.tatvacoconet.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -54,6 +55,47 @@ public class HomeChandniController {
 	public String userList()
 	{		
 		return "chandniUserList";
+	}
+	
+	@RequestMapping(value = "/chandni-charts", method = RequestMethod.GET)
+	public String userCharts()
+	{		
+		return "chandniUserDashboard";
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/getUsersByCity", method = RequestMethod.GET)
+	public ResponseEntity<List<String>> getUsersByCity() {
+		
+		List userCityCountList = userService.getUsersByCity();
+		
+		StringBuilder cityData = new StringBuilder();
+		StringBuilder userCount = new StringBuilder();
+		
+		cityData.append("[");
+		userCount.append("[");
+		for (int i = 0; i < userCityCountList.size(); i++)
+		{
+			Object[] row = (Object[]) userCityCountList.get(i);
+
+			if (i == userCityCountList.size()-1)
+			{
+				cityData.append(" \"" + row[0] + "\" ");
+				userCount.append(" \"" + row[1] + "\" ");
+			}
+			else
+			{
+				cityData.append(" \"" + row[0] + "\", ");
+				userCount.append(" \"" + row[1] + "\", ");
+			}
+		}
+		cityData.append("]");
+		userCount.append("]");
+
+		List<String> responseList = new ArrayList<String>();
+		responseList.add(cityData.toString());
+		responseList.add(userCount.toString());
+		return new ResponseEntity<List<String>>(responseList, HttpStatus.OK);
 	}
 	
 	/**

@@ -25,5 +25,18 @@ module DemoChandni {
         flag: any;
         statusMessage: string;
         statusMessageFlag: boolean;
+        
+        //=======================================
+                
+        pieChartUserData: any;
+        pieChartUserLabel: any;
+        pieChartUserOption: any;
+
+        barChartUserData: any;
+        barChartUserLabel: any;
+        barChartUserSeries: any;
+        barChartUserOption: any;
+
+        colors: any;
     }
 }

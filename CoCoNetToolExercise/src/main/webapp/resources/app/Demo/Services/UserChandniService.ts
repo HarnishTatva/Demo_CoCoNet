@@ -48,6 +48,13 @@ module DemoChandni {
                 .catch(this.fail);
         }
 
+
+        public GetUsersByCity($scope: ICOCOChandniScope): ng.IHttpPromise<UserChandni> {
+            return this._http.get('/chandni/getUsersByCity')
+                .then(this.success)
+                .catch(this.fail);
+        }
+
         private success: (response: any) => {} = (response) => response.data;
 
         private fail: (error: any) => {} = (error) => {

@@ -16,34 +16,33 @@ var DemoChandni;
         }
         UserChandniService.prototype.GetUserList = function ($scope) {
             return this._http.get('/chandni/chandniGetUserList')
-                .then(this.success)
-                .catch(this.fail);
+                .then(this.success)["catch"](this.fail);
         };
         UserChandniService.prototype.deleteUser = function ($scope, userId) {
             return this._http.post('/chandni/deleteUser', userId)
-                .then(this.success)
-                .catch(this.fail);
+                .then(this.success)["catch"](this.fail);
         };
         UserChandniService.prototype.addUpdateUser = function ($scope, user) {
             if ($scope.userChandni.userId == 0) {
                 return this._http.post("/chandni/createUser", user)
-                    .then(this.success)
-                    .catch(this.fail);
+                    .then(this.success)["catch"](this.fail);
             }
             else {
                 return this._http.post("/chandni/updateUser", user)
-                    .then(this.success)
-                    .catch(this.fail);
+                    .then(this.success)["catch"](this.fail);
             }
         };
         UserChandniService.prototype.FindUserByEmail = function ($scope, email) {
             return this._http.get('/chandni/findUserByEmail?email=' + email)
-                .then(this.success)
-                .catch(this.fail);
+                .then(this.success)["catch"](this.fail);
         };
-        UserChandniService.$inject = ["$http", "$q"];
+        UserChandniService.prototype.GetUsersByCity = function ($scope) {
+            return this._http.get('/chandni/getUsersByCity')
+                .then(this.success)["catch"](this.fail);
+        };
         return UserChandniService;
     }());
+    UserChandniService.$inject = ["$http", "$q"];
     DemoChandni.UserChandniService = UserChandniService;
     angular.module("DemoChandni").service("userChandniService", UserChandniService);
 })(DemoChandni || (DemoChandni = {}));

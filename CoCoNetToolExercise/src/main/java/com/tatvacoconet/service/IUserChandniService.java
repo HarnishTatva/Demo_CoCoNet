@@ -12,4 +12,6 @@ public interface IUserChandniService {
 	void updateUser(UserMasterChandni user);
 	UserMasterChandni find(Integer userId);
 	UserMasterChandni findUserByEmail(String email);
+	@SuppressWarnings("rawtypes")
+	List getUsersByCity();
 }

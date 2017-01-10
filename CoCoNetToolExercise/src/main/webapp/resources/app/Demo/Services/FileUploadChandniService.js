@@ -15,9 +15,9 @@ var DemoChandni;
             }).success(function () { })
                 .error(function (data) { });
         };
-        FileUploadChandniService.$inject = ["$http"];
         return FileUploadChandniService;
     }());
+    FileUploadChandniService.$inject = ["$http"];
     DemoChandni.FileUploadChandniService = FileUploadChandniService;
     angular.module("DemoChandni").service("fileUploadChandniService", FileUploadChandniService);
 })(DemoChandni || (DemoChandni = {}));

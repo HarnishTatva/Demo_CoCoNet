@@ -49,4 +49,10 @@ public class UserChandniService implements IUserChandniService
 	public UserMasterChandni findUserByEmail(String email) {
 		return userDAO.findUserByEmail(email);
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getUsersByCity() {
+		return userDAO.getUsersByCity();
+	}
 }

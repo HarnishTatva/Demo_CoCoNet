@@ -1,12 +1,15 @@
 package com.tatvacoconet.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Consumer;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import com.tatvacoconet.controller.HomeController;
 import com.tatvacoconet.entity.UserMasterChandni;
@@ -18,6 +21,11 @@ import com.tatvacoconet.entity.UserMasterChandni;
 @Repository
 public class UserDAOImplChandni extends TatvaSoftDAOImpl<UserMasterChandni, Integer> implements IUserDAOImplChandni 
 {
+	private Logger logger = LoggerFactory.getLogger(UserDAOImplChandni.class);
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	public UserDAOImplChandni() {
 		super(UserMasterChandni.class);
 	}
@@ -62,5 +70,17 @@ public class UserDAOImplChandni extends TatvaSoftDAOImpl<UserMasterChandni, Inte
 			 }
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getUsersByCity() {
+		try{
+			Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT user_city, count(*) from user_chandni GROUP BY user_city");
+			return query.list();
+		}catch(Exception ex){
+			logger.error("Error Message >>>>>>>>>>>> " + ex.getMessage());
+			return null;
+		}
 	}
 }

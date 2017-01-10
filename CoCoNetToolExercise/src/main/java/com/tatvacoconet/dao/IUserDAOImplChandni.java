@@ -17,4 +17,5 @@ public interface IUserDAOImplChandni {
 	void updateUser(UserMasterChandni user);
 	UserMasterChandni findEntity(Integer userId);
 	UserMasterChandni findUserByEmail(String email);
+	List getUsersByCity();
 }
