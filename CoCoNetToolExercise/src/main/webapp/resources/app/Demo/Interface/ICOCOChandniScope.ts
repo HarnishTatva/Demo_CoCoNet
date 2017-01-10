@@ -25,6 +25,8 @@ module DemoChandni {
         flag: any;
         statusMessage: string;
         statusMessageFlag: boolean;
+        showErrorsCheckValidity: any;
+        userForm: any;
         
         //=======================================
                 

@@ -6,5 +6,6 @@ module DemoChandni {
         deleteUser: ($scope: ICOCOChandniScope, userId: any) => ng.IHttpPromise<string>;
         addUpdateUser: ($scope: ICOCOChandniScope, user: any) => ng.IHttpPromise<string>;
         FindUserByEmail: ($scope: ICOCOChandniScope, email: string) => ng.IHttpPromise<boolean>;
+        GetUsersByCity: ($scope: ICOCOChandniScope) => ng.IHttpPromise<UserChandni>;
     }
 }

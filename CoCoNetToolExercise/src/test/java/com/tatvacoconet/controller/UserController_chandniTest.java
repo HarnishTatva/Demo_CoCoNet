@@ -91,4 +91,12 @@ public class UserController_chandniTest {
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 	}
 	
+	@Test
+	public void test6UsersByCity_chandni(){
+		ResponseEntity<List> responseEntity = this.restTemplate.getForEntity("/chandni/getUsersByCity", List.class);
+		List<String> userObjList = responseEntity.getBody();
+		
+		assertThat(userObjList.size()).isGreaterThanOrEqualTo(0);
+		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+	}
 }
