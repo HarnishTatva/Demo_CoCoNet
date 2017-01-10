@@ -67,7 +67,11 @@ module DemoChandni {
                     this.data.userId = this.$scope.userChandni.userId;
                 }
 
-                this.data.userDob = document.getElementById("txtDob").value;
+                if (this.$scope.userChandni.userGender == "") {
+                    this.data.userGender = 0;
+                }
+
+                this.data.userDob = new Date(document.getElementById("txtDob").value);
 
                 if (this.$scope.userChandni.userFullName != "" && this.$scope.userChandni.userFullName != undefined) {
                     var fullname = this.$scope.userChandni.userFullName.split(' ');
@@ -79,7 +83,6 @@ module DemoChandni {
                 var file = this.$scope.profileimagefile;
                 if (file != null || file != undefined) {
                     var uploadUrl = "/chandni/userImageUpload";
-                    this.fileUploadChandniService.uploadFileToUrl(file, uploadUrl);
                     this.data.userImage = file.name;
                 }
 

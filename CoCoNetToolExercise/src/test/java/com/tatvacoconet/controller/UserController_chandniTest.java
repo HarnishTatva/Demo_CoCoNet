@@ -92,7 +92,7 @@ public class UserController_chandniTest {
 	}
 	
 	@Test
-	public void test6UsersByCity_chandni(){
+	public void test7UsersByCity_chandni(){
 		ResponseEntity<List> responseEntity = this.restTemplate.getForEntity("/chandni/getUsersByCity", List.class);
 		List<String> userObjList = responseEntity.getBody();
 		

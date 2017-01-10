@@ -54,7 +54,7 @@
     <div class="container">
          <div class="col-lg-10">
                 <div class="well bs-component" ng-controller="userAddEditChandniController as ctrl" ng-init="ctrl.Init()">
-                    <form class="form-horizontal" ng-submit="ctrl.onSave(userForm.$invalid)" name="userForm" enctype="multipart/form-data"  novalidate="novalidate" form-submit-validation="">
+                    <form class="form-horizontal" name="userForm" enctype="multipart/form-data"  novalidate="novalidate" form-submit-validation="">
                         <fieldset>
                             <legend><span ng-show="userChandni.userId == 0" >Add </span> <span ng-show="userChandni.userId != 0" >Edit </span> User Details</legend>
 
@@ -84,13 +84,10 @@
                                 <div class="col-lg-10">
                                     <div class="radio" ng-repeat="item in genderOptions">
                                         <label>
-                                            <input type="radio" required name="gender" id="genderMale" ng-value="{{item.genderId}}"  ng-checked="{{item.selected}}" ng-model="userChandni.userGender" data-ng-init="ctrl.setGender('${userChandni.userGender}')">
+                                            <input type="radio" name="gender" id="genderMale" ng-value="{{item.genderId}}"  ng-checked="{{item.selected}}" ng-model="userChandni.userGender" data-ng-init="ctrl.setGender('${userChandni.userGender}')">
                                             {{item.name}}
                                         </label>
                                     </div>
-                                    <div data-ng-show="userForm.gender.$dirty && userForm.gender.$error.required">
-										<span style="color:red;">Please enter Gender.</span>
-									</div>
                                 </div>
                             </div>
 

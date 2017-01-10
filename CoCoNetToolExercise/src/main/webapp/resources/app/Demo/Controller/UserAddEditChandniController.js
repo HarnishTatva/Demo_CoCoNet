@@ -60,7 +60,10 @@ var DemoChandni;
                 else {
                     this.data.userId = this.$scope.userChandni.userId;
                 }
-                this.data.userDob = document.getElementById("txtDob").value;
+                if (this.$scope.userChandni.userGender == "") {
+                    this.data.userGender = 0;
+                }
+                this.data.userDob = new Date(document.getElementById("txtDob").value);
                 if (this.$scope.userChandni.userFullName != "" && this.$scope.userChandni.userFullName != undefined) {
                     var fullname = this.$scope.userChandni.userFullName.split(' ');
                     this.data.userFirstName = fullname[0] == undefined ? "First" : fullname[0];
@@ -70,7 +73,6 @@ var DemoChandni;
                 var file = this.$scope.profileimagefile;
                 if (file != null || file != undefined) {
                     var uploadUrl = "/chandni/userImageUpload";
-                    this.fileUploadChandniService.uploadFileToUrl(file, uploadUrl);
                     this.data.userImage = file.name;
                 }
                 this.userChandniService.addUpdateUser(this.$scope, this.data).then(function (response) {
