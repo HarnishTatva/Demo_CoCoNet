@@ -72,8 +72,8 @@
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" name="txtFullname" id="txtFullname" placeholder="Full name" ng-model="user.fullname" required maxlength="100" data-ng-pattern="/^[a-zA-Z0-9 ]*$/" >
                                 </div>
-                                <div class="col-lg-10 col-lg-offset-2" data-ng-show="userForm_harshal.txtFullname.$dirty && userForm_harshal.txtFullname.$error.required">
-									<span style="color: red;">Please Insert full name.</span>
+                                <div class="col-lg-10 col-lg-offset-2" data-ng-show="userForm_harshal.txtFullname.$dirty && userForm_harshal.txtFullname.$error.required || userForm_harshal.txtFullname.$dirty && userForm_harshal.txtFullname.$invalid">
+									<span style="color: red;">Please Insert full name or insert valid full name.</span>
 								</div>
                             </div>
 
