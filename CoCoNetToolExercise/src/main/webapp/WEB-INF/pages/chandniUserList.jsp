@@ -63,7 +63,8 @@
             <div class="col-lg-12">
             	<div class="alert alert-success" ng-show="statusMessageFlag == true" >{{statusMessage}}</div>
             	<br/>
-                <table class="table table-striped table-hover table-responsive">
+    <div class="table-responsive">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="adjust-tdx1">
@@ -141,6 +142,7 @@
                     </tbody>
                 </table>
                 
+                </div>
                 <div class="text-center">
             		 <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
           		</div>	
