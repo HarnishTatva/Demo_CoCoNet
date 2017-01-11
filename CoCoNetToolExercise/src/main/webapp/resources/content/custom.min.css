@@ -67,7 +67,7 @@ td.adjust-large-td
     min-width: 125px;
 }
 
-/* Let's get this party started */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
 }

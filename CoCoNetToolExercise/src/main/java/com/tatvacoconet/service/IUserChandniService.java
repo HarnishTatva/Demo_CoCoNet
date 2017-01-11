@@ -4,14 +4,13 @@ import java.util.List;
 
 import com.tatvacoconet.entity.UserMasterChandni;
 
-
 public interface IUserChandniService {
-	List<UserMasterChandni> getUserList();
-	void deleteUser(Integer userId);
-	void createUser(UserMasterChandni user);
-	void updateUser(UserMasterChandni user);
-	UserMasterChandni find(Integer userId);
-	UserMasterChandni findUserByEmail(String email);
+	public List<UserMasterChandni> getUserList();
+	public void deleteUser(Integer userId);
+	public void createUser(UserMasterChandni user);
+	public void updateUser(UserMasterChandni user);
+	public UserMasterChandni find(Integer userId);
+	public UserMasterChandni findUserByEmail(String email);
 	@SuppressWarnings("rawtypes")
-	List getUsersByCity();
+	public List getUsersByCity(String columnName);
 }

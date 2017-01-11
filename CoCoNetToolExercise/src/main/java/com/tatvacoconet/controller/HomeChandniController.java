@@ -67,7 +67,7 @@ public class HomeChandniController {
 	@RequestMapping(value = "/getUsersByCity", method = RequestMethod.GET)
 	public ResponseEntity<List<String>> getUsersByCity() {
 		
-		List userCityCountList = userService.getUsersByCity();
+		List userCityCountList = userService.getUsersByCity("userCity");
 		
 		StringBuilder cityData = new StringBuilder();
 		StringBuilder userCount = new StringBuilder();

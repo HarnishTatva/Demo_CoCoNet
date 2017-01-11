@@ -57,7 +57,7 @@ module DemoChandni {
 
         public onSave(formIsValid: any) {
             this.$scope.showErrorsCheckValidity = true;
-            if (!this.$scope.flag && this.$scope.userForm.$valid) {
+            if (!this.$scope.flag && this.$scope.userForm.$valid && !this.$scope.imageError) {
                 this.data = this.$scope.userChandni;
 
                 if (this.$scope.userChandni.userId == "") {

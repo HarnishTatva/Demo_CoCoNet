@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.tatvacoconet.entity.UserMasterChandni;
 
-
 /**
  * 
  * @author TatvaSoft
@@ -12,10 +11,11 @@ import com.tatvacoconet.entity.UserMasterChandni;
  */
 public interface IUserDAOImplChandni {
 	public List<UserMasterChandni> getUserList();
-	void deleteUser(Integer userId);
-	void createUser(UserMasterChandni user);
-	void updateUser(UserMasterChandni user);
-	UserMasterChandni findEntity(Integer userId);
-	UserMasterChandni findUserByEmail(String email);
-	List getUsersByCity();
+	public void deleteUser(Integer userId);
+	public void createUser(UserMasterChandni user);
+	public void updateUser(UserMasterChandni user);
+	public UserMasterChandni findEntity(Integer userId);
+	public UserMasterChandni findUserByEmail(String email);
+	@SuppressWarnings("rawtypes")
+	public List getUsersByCity(String columnName);
 }

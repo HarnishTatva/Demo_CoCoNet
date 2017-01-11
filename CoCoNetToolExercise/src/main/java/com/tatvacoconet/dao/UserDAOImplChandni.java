@@ -33,7 +33,6 @@ public class UserDAOImplChandni extends TatvaSoftDAOImpl<UserMasterChandni, Inte
 	
 	@Override
 	public List<UserMasterChandni> getUserList() {
-		//return findAll().sort(c);;
 		 List<UserMasterChandni> users = findAll();
 		 Collections.reverse(users);
 	     return users;
@@ -76,15 +75,9 @@ public class UserDAOImplChandni extends TatvaSoftDAOImpl<UserMasterChandni, Inte
 		return null;
 	}
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes" })
 	@Override
-	public List getUsersByCity() {
-		try{
-			Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT user_city, count(*) from user_chandni GROUP BY user_city");
-			return query.list();
-		}catch(Exception ex){
-			logger.error("Error Message >>>>>>>>>>>> " + ex.getMessage());
-			return null;
-		}
+	public List getUsersByCity(String columnName) {
+		return getCountPerCol(columnName);
 	}
 }

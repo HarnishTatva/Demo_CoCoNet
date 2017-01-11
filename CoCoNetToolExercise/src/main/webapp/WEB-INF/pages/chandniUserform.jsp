@@ -156,7 +156,10 @@
                                 <label for="userImage" class="col-lg-2 control-label">User Image</label>
                                  <div class="col-lg-10">
                                     <input type="file" name="file" id="fileUserImage" class="form-control" file-upload="profileimagefile" accept="image/*" data-ng-init="userChandni.userImage ='${userChandni.userImage}'">
-                                  <img ng-show='userChandni.userImage != ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/{{userChandni.userImage}}" class="img-thumbnail" style="width: 50px;height: 50px;" />
+                                  	<img ng-show='userChandni.userImage != ""' ng-src="${pageContext.request.contextPath}/resources/images_chandni/{{userChandni.userImage}}" class="img-thumbnail" style="width: 50px;height: 50px;" />
+								  	<div ng-if="ctrl.imageError">
+    									<span style="color:red;">File size exceeds 3MB.</span>
+  								  	</div>
                                 </div>
                             </div>
 
