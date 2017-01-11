@@ -16,8 +16,11 @@ var DemoChandni;
             _this.$window = $window;
             _this.$modal = $modal;
             _this.userChandniService = userChandniService;
+            _this.$scope.pageArray = [5, 10, 20];
             _this._window = $window;
             _this.$scope.statusMessageFlag = false;
+            _this.$scope.viewby = 5;
+            _this.$scope.itemsPerPage = $scope.viewby;
             var msg = localStorage.getItem("success");
             if (msg != "null") {
                 localStorage.setItem("success", "null");
@@ -32,11 +35,11 @@ var DemoChandni;
                 $scope.userChandniList = data;
                 $scope.sortType = 'userFirstName'; // set the default sort type
                 $scope.sortReverse = false; // set the default sort order
+                _this.$scope.viewby = 5;
+                _this.$scope.itemsPerPage = $scope.viewby;
                 //----------------------------------
-                $scope.viewby = 5;
                 $scope.totalItems = $scope.userChandniList.length;
                 $scope.currentPage = 1;
-                $scope.itemsPerPage = $scope.viewby;
                 $scope.maxSize = 5; //Number of pager buttons to show
             });
             return _this;

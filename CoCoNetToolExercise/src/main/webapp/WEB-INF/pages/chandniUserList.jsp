@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" ng-controller="userChandniController as ctrl" data-ng-init="ctrl.Init()">
         <div class="row">
             <div class="col-lg-12">
                 <h2>Manage Users</h2>
@@ -59,12 +59,12 @@
             </div>
         </div>
         <br/>
-     	<div class="row" ng-controller="userChandniController as ctrl" data-ng-init="ctrl.GetUserList()" >
+     	<div class="row"  >
             <div class="col-lg-12">
             	<div class="alert alert-success" ng-show="statusMessageFlag == true" >{{statusMessage}}</div>
             	<br/>
-    <div class="table-responsive">
-                <table class="table table-striped table-hover">
+   				<div class="table-responsive">
+                	<table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="adjust-tdx1">
@@ -141,13 +141,21 @@
     					</tr>
                     </tbody>
                 </table>
-                
                 </div>
-                <div class="text-center">
-            		 <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
-          		</div>	
             </div>
         </div>
-    </div>
+    	<div class="row"  >
+           <div class="col-lg-9">
+               <div class="text-center">
+           		 <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+        	   </div>	
+           </div>
+           <div class="col-lg-2 pagination-label">
+	            <b>Items Per Page :</b>
+           </div>
+           <div class="col-lg-1 pagination-dropdown">
+          	    <select class="form-control" ng-model="itemsPerPage" data-ng-init="itemsPerPage = 5" ng-options="obj for obj in pageArray"></select>
+           </div>
+    	</div>
 </body>
 </html> 

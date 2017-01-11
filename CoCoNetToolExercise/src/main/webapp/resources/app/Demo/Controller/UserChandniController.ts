@@ -16,8 +16,12 @@ module DemoChandni {
         /// Conctructor
         constructor(private $scope: ICOCOChandniScope, private $location: ng.ILocationService, private $window: ng.IWindowService, private $modal: ng.ui.bootstrap.IModalService, private userChandniService: IUserChandniService) {
             super($scope);
+
+            this.$scope.pageArray = [5, 10, 20];
             this._window = $window;
             this.$scope.statusMessageFlag = false;
+            this.$scope.viewby = 5;
+            this.$scope.itemsPerPage = $scope.viewby;
 
             var msg = localStorage.getItem("success");
             if (msg != "null") {
@@ -35,11 +39,12 @@ module DemoChandni {
                 $scope.userChandniList = data;
                 $scope.sortType = 'userFirstName'; // set the default sort type
                 $scope.sortReverse = false;  // set the default sort order
+                this.$scope.viewby = 5;
+                this.$scope.itemsPerPage = $scope.viewby;
                 //----------------------------------
-                $scope.viewby = 5;
+
                 $scope.totalItems = $scope.userChandniList.length;
                 $scope.currentPage = 1;
-                $scope.itemsPerPage = $scope.viewby;
                 $scope.maxSize = 5; //Number of pager buttons to show
             });
         }
@@ -66,8 +71,6 @@ module DemoChandni {
         public onEdit(id: number) {
             this._window.location.href = '/chandni/chandni-user-form?id=' + id;
         }
-
-
     }
     angular.module("DemoChandni").controller("userChandniController", UserChandniController);
 }

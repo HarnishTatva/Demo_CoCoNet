@@ -11,6 +11,7 @@ module DemoChandni {
         itemsPerPage: number;
         maxSize: number; //Number of pager buttons to show
         profileimagefile: any;
+        pageArray: any;
         
         //=====================================
         userChandni: UserChandni;

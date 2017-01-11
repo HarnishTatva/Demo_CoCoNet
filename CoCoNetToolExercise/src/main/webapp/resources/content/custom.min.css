@@ -89,3 +89,15 @@ td.adjust-large-td
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: grey; 
 }
+
+.pagination-dropdown{
+    /* margin: 0px; */
+    padding: 15px;
+    /* width: 100px; */
+    float: right;
+}
+.pagination-label{
+    padding: 20px;
+    text-align: right;
+}
+
