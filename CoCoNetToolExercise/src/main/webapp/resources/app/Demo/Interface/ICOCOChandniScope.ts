@@ -29,6 +29,7 @@ module DemoChandni {
         showErrorsCheckValidity: any;
         userForm: any;
         imageError: boolean;
+        searchedUsers: any;
         
         //=======================================
                 

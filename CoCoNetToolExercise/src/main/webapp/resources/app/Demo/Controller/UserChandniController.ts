@@ -5,16 +5,18 @@ module DemoChandni {
         'use strict';
 
         public _window: any;
+        public _filter: any;
         public static $inject = [
             '$scope',
             '$location',
             '$window',
             '$modal',
             'userChandniService',
+            '$filter'
         ];
 
         /// Conctructor
-        constructor(private $scope: ICOCOChandniScope, private $location: ng.ILocationService, private $window: ng.IWindowService, private $modal: ng.ui.bootstrap.IModalService, private userChandniService: IUserChandniService) {
+        constructor(private $scope: ICOCOChandniScope, private $location: ng.ILocationService, private $window: ng.IWindowService, private $modal: ng.ui.bootstrap.IModalService, private userChandniService: IUserChandniService, private $filter: ng.IFilterService) {
             super($scope);
 
             this.$scope.pageArray = [5, 10, 20];
@@ -33,7 +35,6 @@ module DemoChandni {
                     this.$scope.$apply();
                 }.bind(this), 3000);
             }
-
 
             this.userChandniService.GetUserList(this.$scope).then((data) => {
                 $scope.userChandniList = data;
@@ -70,6 +71,16 @@ module DemoChandni {
 
         public onEdit(id: number) {
             this._window.location.href = '/chandni/chandni-user-form?id=' + id;
+        }
+
+        public OnCountChange(users: any) {
+            if (users.length < this.$scope.totalItems && users.length <= this.$scope.itemsPerPage) {
+                this.$scope.totalItems = users.length;
+            }
+            else if (this.$scope.search == "") {
+                this.$scope.totalItems = this.$scope.userChandniList.length;
+                this.$scope.currentPage = 1;
+            }
         }
     }
     angular.module("DemoChandni").controller("userChandniController", UserChandniController);

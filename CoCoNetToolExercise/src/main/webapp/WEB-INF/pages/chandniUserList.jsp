@@ -19,7 +19,6 @@
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/BaseChandniController.js"></script>
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/UserChandniController.js"></script>
     <script src="${pageContext.request.contextPath}/resources/app/Demo/Controller/ModalInstanceChandniController.js"></script>
-    
 </head>
 <body ng-app="DemoChandni">
     <div class="navbar navbar-default navbar-fixed-top">
@@ -55,7 +54,7 @@
         <br/>
         <div class="row">
             <div class="col-lg-4">
-                <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                <input type="text" ng-model="search" class="form-control" placeholder="Search"  ng-change="ctrl.OnCountChange(searchedUsers)">
             </div>
         </div>
         <br/>
@@ -120,8 +119,8 @@
                             <th class="adjust-tdx1">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                       <tr ng-repeat="user in userChandniList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:sortType:sortReverse | filter: search">
+                    <tbody>  
+                       <tr ng-repeat="user in (searchedUsers = (userChandniList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:sortType:sortReverse | filter: search))">
 								<td>{{user.userFirstName + " " + user.userLastName}}</td>
 								<td>{{user.userEmail}}</td>
 								<td>{{ctrl.convertDate(user.userDob)}}</td>
@@ -134,7 +133,7 @@
 								<td><a class="btn btn-primary btn-xs" href="#" ng-click="ctrl.onEdit(user.userId)">Edit</a>&nbsp;<a
 									class="btn btn-danger btn-xs" href="#" ng-click="ctrl.onDelete(user.userId)">Delete</a></td>
 						</tr>
-						<tr ng-show="(userChandniList| filter:search).length == 0">
+						<tr ng-show="(userChandniList| filter:search).length == 0" >
         					<td colspan="9" style="text-align: center;font-weight: bold;">
             					No record to display               
         					</td>
@@ -145,15 +144,15 @@
             </div>
         </div>
     	<div class="row"  >
-           <div class="col-lg-9">
+           <div class="col-lg-9 col-sm-6 col-xs-9">
                <div class="text-center">
            		 <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
         	   </div>	
            </div>
-           <div class="col-lg-2 pagination-label">
+           <div class="col-lg-2 col-sm-3 col-xs-3 pagination-label">
 	            <b>Items Per Page :</b>
            </div>
-           <div class="col-lg-1 pagination-dropdown">
+           <div class="col-lg-1 col-sm-3 col-xs-3 pagination-dropdown">
           	    <select class="form-control" ng-model="itemsPerPage" data-ng-init="itemsPerPage = 5" ng-options="obj for obj in pageArray"></select>
            </div>
     	</div>

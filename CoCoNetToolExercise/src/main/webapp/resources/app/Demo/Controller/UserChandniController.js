@@ -9,13 +9,14 @@ var DemoChandni;
     var UserChandniController = (function (_super) {
         __extends(UserChandniController, _super);
         /// Conctructor
-        function UserChandniController($scope, $location, $window, $modal, userChandniService) {
+        function UserChandniController($scope, $location, $window, $modal, userChandniService, $filter) {
             var _this = _super.call(this, $scope) || this;
             _this.$scope = $scope;
             _this.$location = $location;
             _this.$window = $window;
             _this.$modal = $modal;
             _this.userChandniService = userChandniService;
+            _this.$filter = $filter;
             _this.$scope.pageArray = [5, 10, 20];
             _this._window = $window;
             _this.$scope.statusMessageFlag = false;
@@ -63,6 +64,15 @@ var DemoChandni;
         UserChandniController.prototype.onEdit = function (id) {
             this._window.location.href = '/chandni/chandni-user-form?id=' + id;
         };
+        UserChandniController.prototype.OnCountChange = function (users) {
+            if (users.length < this.$scope.totalItems && users.length <= this.$scope.itemsPerPage) {
+                this.$scope.totalItems = users.length;
+            }
+            else if (this.$scope.search == "") {
+                this.$scope.totalItems = this.$scope.userChandniList.length;
+                this.$scope.currentPage = 1;
+            }
+        };
         return UserChandniController;
     }(DemoChandni.BaseChandniController));
     UserChandniController.$inject = [
@@ -71,6 +81,7 @@ var DemoChandni;
         '$window',
         '$modal',
         'userChandniService',
+        '$filter'
     ];
     DemoChandni.UserChandniController = UserChandniController;
     angular.module("DemoChandni").controller("userChandniController", UserChandniController);
